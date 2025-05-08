@@ -22,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/import { pgTable, serial, text, varchar } from \"drizzle-orm/pg-core\";  export const users = pgTable('users', {   id: serial('id').primaryKey(),   fullName: text('full_name'),   phone: varchar('phone', { length: 256 }), });"],
   "exclude": ["node_modules"]
 }
