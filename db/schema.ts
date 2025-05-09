@@ -46,3 +46,13 @@ export const countries = pgTable(
   },
   (t) => policies
 );
+
+export const cities = pgTable(
+  'cities',
+  {
+    id: serial('id').primaryKey(),
+    name: text('name').notNull(),
+    countryId: integer('country_id').references(() => countries.id),
+  },
+  (t) => policies
+);
