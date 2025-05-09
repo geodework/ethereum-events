@@ -27,3 +27,12 @@ export const eventDomains = pgTable(
   },
   (t) => policies
 );
+
+export const continents = pgTable(
+  'continents',
+  {
+    id: serial('id').primaryKey(),
+    name: text('name').notNull(),
+  },
+  (t) => policies
+);
