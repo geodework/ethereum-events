@@ -29,6 +29,13 @@
       "when": 1746771956277,
       "tag": "0003_rapid_pride",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1746771996672,
+      "tag": "0004_early_prowler",
+      "breakpoints": true
     }
   ]
 }

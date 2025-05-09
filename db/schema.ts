@@ -36,3 +36,13 @@ export const continents = pgTable(
   },
   (t) => policies
 );
+
+export const countries = pgTable(
+  'countries',
+  {
+    id: serial('id').primaryKey(),
+    name: text('name').notNull(),
+    continentId: integer('continent_id').references(() => continents.id),
+  },
+  (t) => policies
+);
