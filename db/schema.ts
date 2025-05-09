@@ -1,7 +1,7 @@
 import { serial, pgTable, text } from 'drizzle-orm/pg-core';
 import policies from './policy';
 
-export const eventsTypes = pgTable(
+export const eventTypes = pgTable(
   'event_types',
   {
     id: serial('id').primaryKey(),
@@ -10,4 +10,4 @@ export const eventsTypes = pgTable(
   (t) => policies
 );
 
-export type TEventsTypes = typeof eventsTypes.$inferSelect;
+export type TEventTypes = typeof eventTypes.$inferSelect;
