@@ -1,14 +1,5 @@
-import { sql } from 'drizzle-orm';
-import { serial, pgPolicy, pgTable, text } from 'drizzle-orm/pg-core';
-
-const policies = [
-  pgPolicy('policy', {
-    as: 'permissive',
-    to: ['anon', 'authenticated'],
-    for: 'select',
-    using: sql`true`,
-  }),
-];
+import { serial, pgTable, text } from 'drizzle-orm/pg-core';
+import policies from './policy';
 
 export const eventsTypes = pgTable(
   'event_types',
