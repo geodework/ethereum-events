@@ -1,5 +1,5 @@
 {
-  "id": "41503db3-211c-4c7d-8bc6-292f08e16ab0",
+  "id": "3d24e4d2-2fe0-4f0a-b0d3-32efa6d5ba0f",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -31,8 +31,7 @@
           "as": "PERMISSIVE",
           "for": "SELECT",
           "to": [
-            "anon",
-            "authenticated"
+            "public"
           ],
           "using": "true"
         }

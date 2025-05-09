@@ -4,4 +4,4 @@ CREATE TABLE "event_types" (
 );
 --> statement-breakpoint
 ALTER TABLE "event_types" ENABLE ROW LEVEL SECURITY;--> statement-breakpoint
-CREATE POLICY "policy" ON "event_types" AS PERMISSIVE FOR SELECT TO "anon", "authenticated" USING (true);
+CREATE POLICY "policy" ON "event_types" AS PERMISSIVE FOR SELECT TO public USING (true);
