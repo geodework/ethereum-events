@@ -10,4 +10,11 @@ export const eventTypes = pgTable(
   (t) => policies
 );
 
-export type TEventTypes = typeof eventTypes.$inferSelect;
+export const eventCategories = pgTable(
+  'event_categories',
+  {
+    id: serial('id').primaryKey(),
+    name: text('name').notNull(),
+  },
+  (t) => policies
+);
