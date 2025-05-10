@@ -102,3 +102,17 @@ export const eventCategoryEvents = pgTable(
   },
   (t) => policies
 );
+
+export const eventDomainEvents = pgTable(
+  'event_domain_events',
+  {
+    id: serial('id').primaryKey(),
+    eventId: integer('event_id')
+      .notNull()
+      .references(() => events.id),
+    domainId: integer('domain_id')
+      .notNull()
+      .references(() => eventDomains.id),
+  },
+  (t) => policies
+);
