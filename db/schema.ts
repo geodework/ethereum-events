@@ -7,7 +7,6 @@ import {
   pgEnum,
 } from 'drizzle-orm/pg-core';
 import policies from './policy';
-import { sql } from 'drizzle-orm';
 
 export const eventTypes = pgTable(
   'event_types',
@@ -86,6 +85,20 @@ export const events = pgTable(
     contacts: text('contacts').array(),
     createdAt: timestamp('created_at').notNull().defaultNow(),
     updatedAt: timestamp('updated_at').notNull().defaultNow(),
+  },
+  (t) => policies
+);
+
+export const eventCategoryEvents = pgTable(
+  'event_category_events',
+  {
+    id: serial('id').primaryKey(),
+    eventId: integer('event_id')
+      .notNull()
+      .references(() => events.id),
+    categoryId: integer('category_id')
+      .notNull()
+      .references(() => eventCategories.id),
   },
   (t) => policies
 );
