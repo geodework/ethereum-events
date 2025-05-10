@@ -1,5 +1,13 @@
-import { serial, pgTable, text, integer } from 'drizzle-orm/pg-core';
+import {
+  serial,
+  pgTable,
+  text,
+  integer,
+  timestamp,
+  pgEnum,
+} from 'drizzle-orm/pg-core';
 import policies from './policy';
+import { sql } from 'drizzle-orm';
 
 export const eventTypes = pgTable(
   'event_types',
@@ -53,6 +61,31 @@ export const cities = pgTable(
     id: serial('id').primaryKey(),
     name: text('name').notNull(),
     countryId: integer('country_id').references(() => countries.id),
+  },
+  (t) => policies
+);
+
+export const venueTypeEnum = pgEnum('venue_type_enum', [
+  'in_person',
+  'virtual',
+  'hybrid',
+]);
+
+export const events = pgTable(
+  'events',
+  {
+    id: serial('id').primaryKey(),
+    name: text('name').notNull(),
+    cityId: integer('city_id').references(() => cities.id),
+    location: text('location'),
+    venueType: venueTypeEnum('venue_type'),
+    startDate: timestamp('start_date').notNull(),
+    endDate: timestamp('end_date').notNull(),
+    links: text('links').array(),
+    socials: text('socials').array(),
+    contacts: text('contacts').array(),
+    createdAt: timestamp('created_at').notNull().defaultNow(),
+    updatedAt: timestamp('updated_at').notNull().defaultNow(),
   },
   (t) => policies
 );
