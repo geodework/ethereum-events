@@ -39,7 +39,7 @@ export const countries = pgTable(
   'countries',
   {
     id: serial('id').primaryKey(),
-    name: text('name').notNull(),
+    name: text('name').notNull().unique(),
     continentId: integer('continent_id').references(() => continents.id),
   },
   (t) => policies

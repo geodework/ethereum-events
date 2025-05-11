@@ -71,6 +71,13 @@
       "when": 1746852921328,
       "tag": "0009_nappy_hellion",
       "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1746942823764,
+      "tag": "0010_long_sheva_callister",
+      "breakpoints": true
     }
   ]
 }
