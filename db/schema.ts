@@ -78,7 +78,7 @@ export const events = pgTable(
   {
     id: serial('id').primaryKey(),
     name: text('name').notNull(),
-    cityId: integer('city_id').references(() => cities.id),
+    countryId: integer('country_id').references(() => countries.id),
     location: text('location'),
     venueType: venueTypeEnum('venue_type'),
     startDateTime: timestamp('start_date_time').notNull(),
