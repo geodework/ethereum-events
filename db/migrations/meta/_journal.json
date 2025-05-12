@@ -78,6 +78,13 @@
       "when": 1746942823764,
       "tag": "0010_long_sheva_callister",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1747017468419,
+      "tag": "0011_brief_pride",
+      "breakpoints": true
     }
   ]
 }

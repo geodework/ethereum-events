@@ -5,6 +5,7 @@ import {
   integer,
   timestamp,
   pgEnum,
+  boolean,
 } from 'drizzle-orm/pg-core';
 import policies from './policy';
 
@@ -69,8 +70,9 @@ export const events = pgTable(
     cityId: integer('city_id').references(() => cities.id),
     location: text('location'),
     venueType: venueTypeEnum('venue_type'),
-    startDate: timestamp('start_date').notNull(),
-    endDate: timestamp('end_date').notNull(),
+    startDateTime: timestamp('start_date_time').notNull(),
+    endDateTime: timestamp('end_date_time').notNull(),
+    hasTimezone: boolean('has_timezone').notNull().default(false),
     links: text('links').array(),
     socials: text('socials').array(),
     contacts: text('contacts').array(),
