@@ -6,6 +6,7 @@ import {
   timestamp,
   pgEnum,
   boolean,
+  varchar,
 } from 'drizzle-orm/pg-core';
 import policies from './policy';
 
@@ -36,11 +37,21 @@ export const continents = pgTable(
   (t) => policies
 );
 
+/**
+ * Follows ISO-3166-1 and The UK Foreign, Commonwealth & Development Office (FCDO)
+ * @param {string} name - English (or French) short name lower case (title case) defined in The UK Foreign, Commonwealth & Development Office (FCDO)
+ * @param {string} officialName - English (or French) short name lower case (title case) defined in ISO 3166-1
+ * @param {string} countryCode - ISO 3166-1 alpha-2
+ * @see https://en.wikipedia.org/wiki/ISO_3166-1
+ * @see https://assets.publishing.service.gov.uk/media/65fd8475f1d3a0001132adf4/FCDO_Geographical_Names_Index_March_2024.csv/preview
+ */
 export const countries = pgTable(
   'countries',
   {
     id: serial('id').primaryKey(),
-    name: text('name').notNull().unique(),
+    name: varchar('name', { length: 80 }).notNull().unique(),
+    officialName: varchar('official_name', { length: 80 }).notNull().unique(),
+    countryCode: varchar('country_code', { length: 2 }).notNull().unique(),
     continentId: integer('continent_id').references(() => continents.id),
   },
   (t) => policies

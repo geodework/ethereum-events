@@ -85,6 +85,20 @@
       "when": 1747017468419,
       "tag": "0011_brief_pride",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1747019585761,
+      "tag": "0012_striped_tyrannus",
+      "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1747025281050,
+      "tag": "0013_unique_gorilla_man",
+      "breakpoints": true
     }
   ]
 }
