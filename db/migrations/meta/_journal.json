@@ -113,6 +113,13 @@
       "when": 1747042300530,
       "tag": "0015_pale_lockheed",
       "breakpoints": true
+    },
+    {
+      "idx": 16,
+      "version": "7",
+      "when": 1747112423696,
+      "tag": "0016_chief_sleeper",
+      "breakpoints": true
     }
   ]
 }
