@@ -14,12 +14,16 @@
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.43.1",
+    "lucide-react": "^0.510.0",
     "next": "15.3.2",
     "postgres": "^3.4.5",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.3.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -32,6 +36,7 @@
     "eslint-config-next": "15.3.2",
     "tailwindcss": "^4",
     "tsx": "^4.19.4",
+    "tw-animate-css": "^1.2.9",
     "typescript": "^5"
   }
 }
