@@ -6,7 +6,11 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:insert": "tsx db/script/insert-data.ts",
+    "supabase:update-types": "tsx supabase/script/update-types.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
@@ -27,6 +31,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.2",
     "tailwindcss": "^4",
+    "tsx": "^4.19.4",
     "typescript": "^5"
   }
 }
