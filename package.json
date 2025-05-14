@@ -9,7 +9,8 @@
     "lint": "next lint",
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
-    "db:insert": "tsx db/script/insert-data.ts"
+    "db:insert": "tsx db/script/insert-data.ts",
+    "supabase:update-types": "tsx supabase/script/update-types.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.49.4",
