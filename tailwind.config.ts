@@ -26,11 +26,11 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "hsl(228, 65%, 50%)",
+          DEFAULT: "#0062ba",
           foreground: "hsl(var(--primary-foreground))",
         },
         accent: {
-          DEFAULT: "rgb(255, 213, 65)",
+          DEFAULT: "rgb(255 214 0)",
           foreground: "hsl(var(--accent-foreground))",
         },
         secondary: {
