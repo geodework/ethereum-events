@@ -17,7 +17,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           {/* <Link
             href="https://geodework.com"
-            className="text-sm font-medium text-slate-300 hover:text-primary"
+            className="hidden sm:flex text-sm font-medium text-slate-300 hover:text-primary"
             target="_blank"
             rel="noopener noreferrer"
           >
