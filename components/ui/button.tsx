@@ -36,7 +36,7 @@ const buttonVariants = cva(
 )
 
 function Button({
-  className,
+  className = "",
   variant,
   size,
   asChild = false,
@@ -50,7 +50,13 @@ function Button({
   return (
     <Comp
       data-slot="button"
-      className={cn(buttonVariants({ variant, size, className }))}
+      className={cn(
+        buttonVariants({ variant, size }),
+        "font-citypop rounded-full font-bold",
+        variant === "default" &&
+          "bg-gradient-to-r from-citypopPink via-citypopPurple to-citypopBlue text-white drop-shadow-neon border-2 border-citypopYellow",
+        className
+      )}
       {...props}
     />
   )

@@ -3,17 +3,21 @@ import { Globe } from "lucide-react"
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-primary">
-      <div className="container py-8">
+    <footer className="bg-gradient-to-r from-citypopBlue via-citypopPurple to-citypopPink shadow-inner shadow-citypopPink/30 rounded-t-3xl border-t-4 border-citypopYellow mt-12">
+      <div className="container py-10">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div>
-            <div className="flex items-center gap-2">
-              <div className="rounded-full bg-accent p-1.5">
-                <Globe className="h-4 w-4 text-white" />
+            <div className="flex items-center gap-3">
+              <div className="rounded-full bg-citypopYellow p-2 shadow-md shadow-citypopPink/30">
+                <Globe className="h-5 w-5 text-citypopPink" />
               </div>
-              <h3 className="text-lg font-semibold text-white">Ethereum Events</h3>
+              <h3 className="text-xl font-extrabold font-citypop text-white drop-shadow-neon tracking-widest">
+                Ethereum Events
+              </h3>
             </div>
-            <p className="mt-2 text-sm text-slate-300">Discover and plan for crypto events worldwide</p>
+            <p className="mt-2 text-base text-citypopYellow font-citypop">
+              Discover and plan for crypto events worldwide
+            </p>
           </div>
           <div>
             <h3 className="text-lg font-medium text-white">Links</h3>
@@ -71,12 +75,14 @@ export default function Footer() {
             </ul>
           </div>
         </div>
-        <div className="mt-8 border-t border-slate-100 pt-8 text-center text-sm text-slate-300">
-          <p>© {new Date().getFullYear()} Ethereum Events. All rights reserved.</p>
+        <div className="mt-10 border-t-2 border-citypopYellow pt-8 text-center text-base text-citypopYellow font-citypop">
+          <p>
+            © {new Date().getFullYear()} Ethereum Events. All rights reserved.
+          </p>
           <p className="mt-2">
             <Link
               href="https://geodework.com"
-              className="text-primary hover:underline"
+              className="text-citypopPink hover:underline font-bold"
               target="_blank"
               rel="noopener noreferrer"
             >

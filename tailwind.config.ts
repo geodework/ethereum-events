@@ -19,6 +19,15 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        citypop: [
+          '"M PLUS Rounded 1c"',
+          '"Kiwi Maru"',
+          '"Nico Moji"',
+          "Arial",
+          "sans-serif",
+        ],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -53,6 +62,13 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        citypopPink: "#FF8FAB",
+        citypopPurple: "#A890FE",
+        citypopBlue: "#5B8CFF",
+        citypopYellow: "#FFE066",
+        citypopSunsetStart: "#FF8FAB",
+        citypopSunsetMid: "#A890FE",
+        citypopSunsetEnd: "#5B8CFF",
       },
       borderRadius: {
         lg: "var(--radius)",

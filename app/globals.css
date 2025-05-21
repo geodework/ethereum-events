@@ -1,51 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Kiwi+Maru:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 330 100% 98%; /* Soft pink */
+    --foreground: 260 60% 18%; /* Deep purple */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 260 60% 18%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 228 65% 50%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 48 100% 63%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 260 60% 18%;
+    --primary: 270 100% 80%; /* Citypop purple */
+    --primary-foreground: 330 100% 98%;
+    --secondary: 220 100% 85%; /* Citypop blue (updated) */
+    --secondary-foreground: 260 60% 18%;
+    --muted: 50 100% 90%; /* Citypop yellow */
+    --muted-foreground: 260 60% 18%;
+    --accent: 340 100% 85%; /* Citypop pink */
+    --accent-foreground: 260 60% 18%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 228 65% 50%;
-    --radius: 0.5rem;
+    --destructive-foreground: 330 100% 98%;
+    --border: 270 100% 80%;
+    --input: 270 100% 80%;
+    --ring: 220 100% 85%;
+    --radius: 1.2rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 228 65% 50%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 48 100% 63%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --background: 260 60% 18%;
+    --foreground: 330 100% 98%;
+    --card: 260 60% 18%;
+    --card-foreground: 330 100% 98%;
+    --popover: 260 60% 18%;
+    --popover-foreground: 330 100% 98%;
+    --primary: 270 100% 80%;
+    --primary-foreground: 260 60% 18%;
+    --secondary: 220 100% 85%;
+    --secondary-foreground: 260 60% 18%;
+    --muted: 50 100% 90%;
+    --muted-foreground: 260 60% 18%;
+    --accent: 340 100% 85%;
+    --accent-foreground: 260 60% 18%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 228 65% 50%;
+    --destructive-foreground: 330 100% 98%;
+    --border: 270 100% 80%;
+    --input: 270 100% 80%;
+    --ring: 220 100% 85%;
   }
 }
 
@@ -54,6 +56,14 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    font-family: 'M PLUS Rounded 1c', 'Kiwi Maru', 'Nico Moji', Arial, sans-serif;
+    @apply bg-gradient-to-br from-citypopSunsetStart via-citypopSunsetMid to-citypopSunsetEnd text-foreground;
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .drop-shadow-neon {
+    filter: drop-shadow(0 0 6px #FF8FAB) drop-shadow(0 0 12px #A890FE);
   }
 }

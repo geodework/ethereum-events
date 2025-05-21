@@ -1,26 +1,23 @@
-import type React from 'react';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
-import { ThemeProvider } from '@/components/theme-provider';
-
-const inter = Inter({ subsets: ['latin'] });
+import type React from "react"
+import type { Metadata } from "next"
+import "./globals.css"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
-  title: 'Ethereum Events - Global Crypto Calendar',
-  description: 'Discover and plan for crypto events worldwide',
-};
+  title: "Ethereum Events - Global Crypto Calendar",
+  description: "Discover and plan for crypto events worldwide",
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="ja" suppressHydrationWarning>
+      <body className="font-citypop">
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -35,5 +32,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }
