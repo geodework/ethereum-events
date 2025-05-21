@@ -26,15 +26,15 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0062ba",
+          DEFAULT: "hsl(290,100%,60%)",
           foreground: "hsl(var(--primary-foreground))",
         },
         accent: {
-          DEFAULT: "rgb(255 214 0)",
+          DEFAULT: "hsl(120,100%,50%)",
           foreground: "hsl(var(--accent-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "hsl(180,100%,50%)",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
@@ -53,6 +53,12 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        neonPink: "#ff00cc",
+        neonCyan: "#00fff7",
+        neonYellow: "#fff600",
+        neonGreen: "#39ff14",
+        neonBlue: "#00aaff",
+        darkBg: "#0a001a",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -68,10 +74,32 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        neonGlow: {
+          "0%, 100%": {
+            filter:
+              "drop-shadow(0 0 8px #ff00cc) drop-shadow(0 0 16px #00fff7)",
+          },
+          "50%": {
+            filter:
+              "drop-shadow(0 0 16px #fff600) drop-shadow(0 0 32px #39ff14)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        neonGlow: "neonGlow 2s infinite alternate",
+      },
+      boxShadow: {
+        neon: "0 0 8px #ff00cc, 0 0 16px #00fff7",
+        neonCyan: "0 0 8px #00fff7, 0 0 16px #00fff7",
+        neonPink: "0 0 8px #ff00cc, 0 0 16px #ff00cc",
+        neonGreen: "0 0 8px #39ff14, 0 0 16px #39ff14",
+      },
+      backgroundImage: {
+        "cyberpunk-gradient":
+          "linear-gradient(90deg, #ff00cc 0%, #00fff7 100%)",
+        "cyberpunk-radial": "radial-gradient(circle, #ff00cc 0%, #00fff7 100%)",
       },
     },
   },

@@ -44,19 +44,26 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
     deadlineSoon: false,
   })
 
-  const handleFilterChange = (key: keyof FilterState, value: string | boolean) => {
+  const handleFilterChange = (
+    key: keyof FilterState,
+    value: string | boolean
+  ) => {
     const newFilters = { ...filters, [key]: value }
     setFilters(newFilters)
     onFilterChange(newFilters)
   }
 
   return (
-    <div className="sticky top-16 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <div className="sticky top-16 z-40 w-full border-b-2 border-neonPink bg-darkBg/90 backdrop-blur supports-[backdrop-filter]:bg-darkBg/80 shadow-neon">
       <div className="container flex flex-wrap items-center justify-between gap-2 py-4">
         <div className="flex flex-wrap items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-slate-200 bg-white text-slate-700"
+              >
                 <MapPin className="mr-2 h-4 w-4 text-blue-500" />
                 {filters.region}
               </Button>
@@ -79,7 +86,11 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-slate-200 bg-white text-slate-700"
+              >
                 <Filter className="mr-2 h-4 w-4 text-blue-500" />
                 {filters.month}
               </Button>
@@ -91,7 +102,9 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
                 value={filters.month}
                 onValueChange={(value) => handleFilterChange("month", value)}
               >
-                <DropdownMenuRadioItem value="All Months">All Months</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="All Months">
+                  All Months
+                </DropdownMenuRadioItem>
                 {months.map((month) => (
                   <DropdownMenuRadioItem key={month} value={month}>
                     {month}
