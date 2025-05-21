@@ -19,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        cyberpunk: ["Orbitron", "monospace"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -26,32 +29,32 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0062ba",
-          foreground: "hsl(var(--primary-foreground))",
-        },
-        accent: {
-          DEFAULT: "rgb(255 214 0)",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "#e5e5e0",
+          foreground: "#18181b",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "#bdbdb2",
+          foreground: "#18181b",
+        },
+        accent: {
+          DEFAULT: "#ff69b4",
+          foreground: "#fff0fa",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "#ff3860",
+          foreground: "#fff",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "#f4f4f2",
+          foreground: "#a1a1aa",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "#fff",
+          foreground: "#18181b",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "#fff",
+          foreground: "#18181b",
         },
       },
       borderRadius: {

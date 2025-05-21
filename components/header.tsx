@@ -4,13 +4,16 @@ import { ThemeToggle } from "./theme-toggle"
 
 export default function Header() {
   return (
-    <header className="sticky top-0 z-50 w-full border-slate-100 bg-primary shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b-4 border-accent bg-primary shadow-cyberpunk">
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="rounded-full bg-accent p-2">
+          <div className="rounded-full bg-accent p-2 shadow-cyberpunk-glow">
             <Globe className="h-5 w-5 text-primary" />
           </div>
-          <Link href="/" className="text-xl font-bold text-white">
+          <Link
+            href="/"
+            className="text-xl font-extrabold cyberpunk-heading drop-shadow-cyberpunk-glow"
+          >
             Ethereum Events
           </Link>
         </div>

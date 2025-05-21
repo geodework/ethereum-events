@@ -38,8 +38,10 @@ export function CalendarView({ events }: CalendarViewProps) {
     return (
       (eventStartYear === currentYear && eventStartMonth === currentMonth) ||
       (eventEndYear === currentYear && eventEndMonth === currentMonth) ||
-      (new Date(currentYear, currentMonth, 1) >= new Date(eventStartYear, eventStartMonth, 1) &&
-        new Date(currentYear, currentMonth, 1) <= new Date(eventEndYear, eventEndMonth, 1))
+      (new Date(currentYear, currentMonth, 1) >=
+        new Date(eventStartYear, eventStartMonth, 1) &&
+        new Date(currentYear, currentMonth, 1) <=
+          new Date(eventEndYear, eventEndMonth, 1))
     )
   })
 
@@ -86,7 +88,7 @@ export function CalendarView({ events }: CalendarViewProps) {
             variant="outline"
             size="icon"
             onClick={prevMonth}
-            className="border-slate-200 hover:bg-blue-50 hover:text-primary"
+            className="border-slate-200 hover:bg-green-50 hover:text-primary"
           >
             <ChevronLeft className="h-4 w-4" />
           </Button>
@@ -94,7 +96,7 @@ export function CalendarView({ events }: CalendarViewProps) {
             variant="outline"
             size="icon"
             onClick={nextMonth}
-            className="border-slate-200 hover:bg-blue-50 hover:text-primary"
+            className="border-slate-200 hover:bg-green-50 hover:text-primary"
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
@@ -111,26 +113,34 @@ export function CalendarView({ events }: CalendarViewProps) {
         {calendarDays.map((day, index) => (
           <div
             key={index}
-            className={`min-h-[100px] border p-1 ${day ? "bg-white" : "bg-slate-50"} ${
-              day && day.events.length > 0 ? "border-blue-100" : "border-slate-100"
+            className={`min-h-[100px] border p-1 ${
+              day ? "bg-white" : "bg-slate-50"
+            } ${
+              day && day.events.length > 0
+                ? "border-green-100"
+                : "border-slate-100"
             } rounded`}
           >
             {day && (
               <>
-                <div className="text-right text-sm font-medium text-slate-700">{day.day}</div>
+                <div className="text-right text-sm font-medium text-slate-700">
+                  {day.day}
+                </div>
                 {day.events.length > 0 && (
                   <div className="mt-1">
                     {day.events.slice(0, 2).map((event) => (
                       <div
                         key={event.id}
-                        className="mb-1 truncate rounded bg-gradient-to-r from-blue-50 to-blue-100 px-1 py-0.5 text-xs text-primary"
+                        className="mb-1 truncate rounded bg-gradient-to-r from-green-50 to-green-100 px-1 py-0.5 text-xs text-primary"
                         title={event.name}
                       >
                         {event.name}
                       </div>
                     ))}
                     {day.events.length > 2 && (
-                      <div className="text-xs text-slate-500">+{day.events.length - 2} more</div>
+                      <div className="text-xs text-slate-500">
+                        +{day.events.length - 2} more
+                      </div>
                     )}
                   </div>
                 )}
@@ -140,7 +150,9 @@ export function CalendarView({ events }: CalendarViewProps) {
         ))}
       </div>
 
-      <h3 className="mb-4 text-xl font-semibold text-slate-900">Events in {months[currentMonth]}</h3>
+      <h3 className="mb-4 text-xl font-semibold text-slate-900">
+        Events in {months[currentMonth]}
+      </h3>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredEvents.map((event) => (
