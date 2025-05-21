@@ -112,7 +112,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
             />
           </div>
 
-          <div className="flex items-center space-x-2">
+          {/* <div className="flex items-center space-x-2">
             <Switch
               id="deadline-soon"
               checked={filters.deadlineSoon}
@@ -122,10 +122,10 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
             <Label htmlFor="deadline-soon" className="text-sm text-slate-700">
               Ticket Deadline Soon
             </Label>
-          </div>
+          </div> */}
         </div>
 
-        <Dialog>
+        {/* <Dialog>
           <DialogTrigger asChild>
             <Button
               variant="outline"
@@ -182,7 +182,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
               </div>
             </div>
           </DialogContent>
-        </Dialog>
+        </Dialog> */}
       </div>
     </div>
   )

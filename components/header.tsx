@@ -15,14 +15,14 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex items-center gap-4">
-          <Link
+          {/* <Link
             href="https://geodework.com"
             className="text-sm font-medium text-slate-300 hover:text-primary"
             target="_blank"
             rel="noopener noreferrer"
           >
             Powered by Geodework
-          </Link>
+          </Link> */}
           <ThemeToggle />
         </div>
       </div>
