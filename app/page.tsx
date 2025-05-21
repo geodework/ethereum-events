@@ -2,9 +2,9 @@
 
 import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { CalendarView } from "@/components/calendar-view"
+import CalendarView from "@/components/calendar-view"
 import { ListView } from "@/components/list-view"
-import { FilterBar, type FilterState } from "@/components/filter-bar"
+import FilterBar, { type FilterState } from "@/components/filter-bar"
 import { events } from "@/lib/data"
 import { Calendar, List, Globe } from "lucide-react"
 

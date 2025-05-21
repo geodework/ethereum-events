@@ -1,51 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 228 65% 50%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 48 100% 63%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 228 65% 50%;
+    --background: 220 10% 96%; /* light grey */
+    --foreground: 277 100% 99%; /* near white */
+    --card: 220 10% 96%;
+    --card-foreground: 277 100% 99%;
+    --popover: 220 10% 96%;
+    --popover-foreground: 277 100% 99%;
+    --primary: 293 100% 63%; /* neon purple */
+    --primary-foreground: 277 100% 99%;
+    --secondary: 166 100% 50%; /* neon green */
+    --secondary-foreground: 277 100% 99%;
+    --muted: 220 10% 80%;
+    --muted-foreground: 277 100% 99%;
+    --accent: 51 100% 50%; /* neon yellow */
+    --accent-foreground: 277 100% 99%;
+    --destructive: 0 100% 63%; /* neon red */
+    --destructive-foreground: 277 100% 99%;
+    --border: 277 100% 80%;
+    --input: 277 100% 80%;
+    --ring: 293 100% 63%;
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 228 65% 50%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 48 100% 63%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 228 65% 50%;
+    --background: 260 20% 10%;
+    --foreground: 277 100% 99%;
+    --card: 260 20% 10%;
+    --card-foreground: 277 100% 99%;
+    --popover: 260 20% 10%;
+    --popover-foreground: 277 100% 99%;
+    --primary: 293 100% 63%;
+    --primary-foreground: 277 100% 99%;
+    --secondary: 166 100% 50%;
+    --secondary-foreground: 277 100% 99%;
+    --muted: 260 20% 20%;
+    --muted-foreground: 277 100% 99%;
+    --accent: 51 100% 50%;
+    --accent-foreground: 277 100% 99%;
+    --destructive: 0 100% 63%;
+    --destructive-foreground: 277 100% 99%;
+    --border: 277 100% 40%;
+    --input: 277 100% 40%;
+    --ring: 293 100% 63%;
   }
 }
 
@@ -55,5 +57,9 @@
   }
   body {
     @apply bg-background text-foreground;
+    font-family: 'Orbitron', 'Inter', 'Arial', sans-serif;
+  }
+  .font-orbitron {
+    font-family: 'Orbitron', 'Inter', 'Arial', sans-serif;
   }
 }

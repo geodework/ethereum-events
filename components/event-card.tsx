@@ -36,32 +36,40 @@ export function EventCard({ event }: EventCardProps) {
   }
 
   return (
-    <Card className="group h-full overflow-hidden border-slate-200 transition-all hover:shadow-md">
-      <CardHeader className="bg-gradient-to-r from-blue-50 to-slate-50 pb-2 py-6">
+    <Card className="rounded-xl border-2 border-neonPink bg-gradient-to-br from-[#23243a] via-[#23243a]/90 to-[#1a1b2e] shadow-[0_0_12px_2px_#ff3cac] font-orbitron text-neonBlue hover:border-neonYellow hover:shadow-[0_0_16px_4px_#ffe700] transition-all duration-200">
+      <CardHeader className="bg-gradient-to-r from-blue-50/10 to-slate-900/10 pb-2 pt-6">
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="text-xl font-bold text-primary group-hover:text-blue-600">{event.name}</h3>
+            <h3 className="text-xl font-bold text-primary group-hover:text-blue-600">
+              {event.name}
+            </h3>
             <p className="text-sm text-slate-500">{event.description}</p>
           </div>
-          <Badge variant="outline" className="border border-blue-200 bg-white font-medium text-primary">
+          <Badge
+            variant="outline"
+            className="border border-neonBlue bg-transparent font-medium text-neonBlue"
+          >
             {event.region}
           </Badge>
         </div>
       </CardHeader>
-      <CardContent className="space-y-3 p-4 pb-2">
-        <div className="flex items-center gap-2 text-sm">
-          <MapPin className="h-4 w-4 text-blue-500" />
-          <span className="text-slate-700">
+      <div className="w-full h-1 rounded-full bg-gradient-to-r from-neonPink via-neonYellow to-neonBlue" />
+      <CardContent className="space-y-3 px-0 pb-2">
+        <div className="flex items-center gap-2 text-sm px-6">
+          <MapPin className="h-4 w-4 text-neonBlue" />
+          <span className="text-slate-200">
             {event.city}, {event.country}
           </span>
         </div>
-        <div className="flex items-center gap-2 text-sm">
-          <Calendar className="h-4 w-4 text-blue-500" />
-          <span className="text-slate-700">{formatDateRange(event.startDate, event.endDate)}</span>
+        <div className="flex items-center gap-2 text-sm px-6">
+          <Calendar className="h-4 w-4 text-neonBlue" />
+          <span className="text-slate-200">
+            {formatDateRange(event.startDate, event.endDate)}
+          </span>
         </div>
-        <div className="flex items-center gap-2 text-sm">
-          <Flag className="h-4 w-4 text-blue-500" />
-          <span className="text-slate-700">
+        <div className="flex items-center gap-2 text-sm px-6">
+          <Flag className="h-4 w-4 text-neonBlue" />
+          <span className="text-slate-200">
             Ticket Deadline: {formatDeadline(event.ticketDeadline)}
             {isDeadlineSoon() && (
               <Badge variant="destructive" className="ml-2 text-xs">
@@ -70,23 +78,24 @@ export function EventCard({ event }: EventCardProps) {
             )}
           </span>
         </div>
-        <div className="flex items-center gap-2 text-sm">
-          <Thermometer className="h-4 w-4 text-blue-500" />
-          <span className="text-slate-700">Avg. Temp: {event.temperature}</span>
+        <div className="flex items-center gap-2 text-sm px-6">
+          <Thermometer className="h-4 w-4 text-neonBlue" />
+          <span className="text-slate-200">Avg. Temp: {event.temperature}</span>
         </div>
       </CardContent>
-      <CardFooter className="flex gap-2 border-t border-slate-100 bg-slate-50 p-3">
+      <div className="w-full h-1 rounded-full bg-gradient-to-r from-neonBlue via-neonYellow to-neonPink" />
+      <CardFooter className="flex gap-2 bg-transparent">
         <Button
           variant="outline"
           size="sm"
-          className="flex-1 border-slate-200 bg-white text-slate-700 hover:bg-blue-50 hover:text-primary"
+          className="flex-1 border-neonBlue bg-transparent text-neonBlue hover:bg-neonBlue hover:text-black"
         >
           <Calendar className="mr-1 h-3 w-3" /> Add to Calendar
         </Button>
         <Button
           variant="outline"
           size="sm"
-          className="border-slate-200 bg-white text-slate-700 hover:bg-blue-50 hover:text-primary"
+          className="border-neonBlue bg-transparent text-neonBlue hover:bg-neonBlue hover:text-black"
         >
           <Globe className="h-3 w-3" />
         </Button>

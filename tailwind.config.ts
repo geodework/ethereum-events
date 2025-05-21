@@ -19,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        orbitron: ["Orbitron", "Inter", "Arial", "sans-serif"],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -26,19 +29,19 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0062ba",
+          DEFAULT: "#d726ff",
           foreground: "hsl(var(--primary-foreground))",
         },
         accent: {
-          DEFAULT: "rgb(255 214 0)",
+          DEFAULT: "#ffe700",
           foreground: "hsl(var(--accent-foreground))",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
+          DEFAULT: "#00ff9f",
           foreground: "hsl(var(--secondary-foreground))",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
+          DEFAULT: "#ff206e",
           foreground: "hsl(var(--destructive-foreground))",
         },
         muted: {
@@ -53,6 +56,11 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        neonBlue: "#00cfff",
+        neonPink: "#ff3cac",
+        neonGreen: "#00ff9f",
+        neonYellow: "#ffe700",
+        neonPurple: "#d726ff",
       },
       borderRadius: {
         lg: "var(--radius)",
