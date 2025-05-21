@@ -1,6 +1,6 @@
 import Link from "next/link"
-import { Globe } from "lucide-react"
 import { ThemeToggle } from "./theme-toggle"
+import Image from "next/image"
 
 export default function Header() {
   return (
@@ -8,7 +8,12 @@ export default function Header() {
       <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-2">
           <div className="rounded-full bg-accent p-2">
-            <Globe className="h-5 w-5 text-primary" />
+            <Image
+              src="/geode-ethereum.png"
+              alt="Ethereum Events"
+              width={24}
+              height={24}
+            />
           </div>
           <Link href="/" className="text-xl font-bold text-white">
             Ethereum Events
