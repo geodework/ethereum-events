@@ -68,7 +68,7 @@ export default function Home() {
 
       <FilterBar onFilterChange={handleFilterChange} />
 
-      <Tabs defaultValue="calendar" className="w-full">
+      <Tabs defaultValue="list" className="w-full">
         <div className="container py-4">
           <TabsList className="grid w-full max-w-md grid-cols-2 border bg-white">
             <TabsTrigger
