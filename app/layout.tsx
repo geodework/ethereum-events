@@ -1,13 +1,13 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Orbitron } from "next/font/google"
+import { Audiowide, Share_Tech_Mono } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"] })
-const orbitron = Orbitron({ subsets: ["latin"], weight: ["400", "700", "900"] })
+const audiowide = Audiowide({ subsets: ["latin"], weight: ["400"] })
+const shareTechMono = Share_Tech_Mono({ subsets: ["latin"], weight: ["400"] })
 
 export const metadata: Metadata = {
   title: "Ethereum Events - Global Crypto Calendar",
@@ -21,7 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={orbitron.className}>
+      <body className={shareTechMono.className + " font-mono"}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
