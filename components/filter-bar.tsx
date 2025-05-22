@@ -44,20 +44,30 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
     deadlineSoon: false,
   })
 
-  const handleFilterChange = (key: keyof FilterState, value: string | boolean) => {
+  const handleFilterChange = (
+    key: keyof FilterState,
+    value: string | boolean
+  ) => {
     const newFilters = { ...filters, [key]: value }
     setFilters(newFilters)
     onFilterChange(newFilters)
   }
 
   return (
-    <div className="sticky top-16 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <div
+      className="sticky z-40 w-full border-b border-[#00fff7] bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60 shadow-md"
+      style={{ top: 76 }}
+    >
       <div className="container flex flex-wrap items-center justify-between gap-2 py-4">
         <div className="flex flex-wrap items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
-                <MapPin className="mr-2 h-4 w-4 text-blue-500" />
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-2 border-[#00fff7] bg-white text-[#00fff7] font-display hover:border-[#ff00ea] hover:text-[#ff00ea] focus-visible:ring-[#00fff7] focus-visible:shadow-[0_0_0_3px_#00fff7]"
+              >
+                <MapPin className="mr-2 h-4 w-4 text-[#00fff7]" />
                 {filters.region}
               </Button>
             </DropdownMenuTrigger>
@@ -79,8 +89,12 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
-                <Filter className="mr-2 h-4 w-4 text-blue-500" />
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-2 border-[#00fff7] bg-white text-[#00fff7] font-display hover:border-[#ff00ea] hover:text-[#ff00ea] focus-visible:ring-[#00fff7] focus-visible:shadow-[0_0_0_3px_#00fff7]"
+              >
+                <Filter className="mr-2 h-4 w-4 text-[#00fff7]" />
                 {filters.month}
               </Button>
             </DropdownMenuTrigger>
@@ -91,7 +105,9 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
                 value={filters.month}
                 onValueChange={(value) => handleFilterChange("month", value)}
               >
-                <DropdownMenuRadioItem value="All Months">All Months</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="All Months">
+                  All Months
+                </DropdownMenuRadioItem>
                 {months.map((month) => (
                   <DropdownMenuRadioItem key={month} value={month}>
                     {month}
@@ -106,7 +122,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
             <Input
               type="text"
               placeholder="Search by city..."
-              className="h-9 w-[200px] border-slate-200 pl-8 text-slate-700"
+              className="h-9 w-[200px] border-2 border-[#00fff7] pl-8 text-[#0f0c29] font-display focus:border-[#ff00ea] focus:ring-[#00fff7] focus:shadow-[0_0_0_2px_#00fff7]"
               value={filters.city}
               onChange={(e) => handleFilterChange("city", e.target.value)}
             />

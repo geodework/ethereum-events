@@ -37,13 +37,18 @@ export function EventCard({ event }: EventCardProps) {
 
   return (
     <Card className="group h-full overflow-hidden border-slate-200 transition-all hover:shadow-md">
-      <CardHeader className="bg-gradient-to-r from-blue-50 to-slate-50 pb-2 py-6">
+      <CardHeader className="bg-gradient-to-r from-white via-[#f3f4f6] to-[#e0e0e0] pb-2 py-6">
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="text-xl font-bold text-primary group-hover:text-blue-600">{event.name}</h3>
+            <h3 className="text-xl font-bold font-display tracking-wide text-[#0f0c29] group-hover:text-[#00fff7] transition-colors">
+              {event.name}
+            </h3>
             <p className="text-sm text-slate-500">{event.description}</p>
           </div>
-          <Badge variant="outline" className="border border-blue-200 bg-white font-medium text-primary">
+          <Badge
+            variant="default"
+            className="font-display bg-[#00fff7] text-black shadow-[0_0_6px_#00fff7AA]"
+          >
             {event.region}
           </Badge>
         </div>
@@ -57,14 +62,19 @@ export function EventCard({ event }: EventCardProps) {
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Calendar className="h-4 w-4 text-blue-500" />
-          <span className="text-slate-700">{formatDateRange(event.startDate, event.endDate)}</span>
+          <span className="text-slate-700">
+            {formatDateRange(event.startDate, event.endDate)}
+          </span>
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Flag className="h-4 w-4 text-blue-500" />
           <span className="text-slate-700">
             Ticket Deadline: {formatDeadline(event.ticketDeadline)}
             {isDeadlineSoon() && (
-              <Badge variant="destructive" className="ml-2 text-xs">
+              <Badge
+                variant="secondary"
+                className="ml-2 text-xs font-display bg-[#ff00ea] text-white shadow-[0_0_6px_#ff00eaAA]"
+              >
                 Soon
               </Badge>
             )}
@@ -76,18 +86,10 @@ export function EventCard({ event }: EventCardProps) {
         </div>
       </CardContent>
       <CardFooter className="flex gap-2 border-t border-slate-100 bg-slate-50 p-3">
-        <Button
-          variant="outline"
-          size="sm"
-          className="flex-1 border-slate-200 bg-white text-slate-700 hover:bg-blue-50 hover:text-primary"
-        >
+        <Button variant="default" size="sm" className="flex-1 font-display">
           <Calendar className="mr-1 h-3 w-3" /> Add to Calendar
         </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          className="border-slate-200 bg-white text-slate-700 hover:bg-blue-50 hover:text-primary"
-        >
+        <Button variant="secondary" size="sm" className="font-display">
           <Globe className="h-3 w-3" />
         </Button>
       </CardFooter>

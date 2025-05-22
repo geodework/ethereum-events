@@ -58,14 +58,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
-      <div className="container py-8">
-        <div className="mb-8 text-center">
-          <p className="mt-2 text-lg text-slate-600">
-            Discover, filter, and track crypto events worldwide.
-          </p>
-        </div>
-      </div>
-
       <FilterBar onFilterChange={handleFilterChange} />
 
       <Tabs defaultValue="list" className="w-full">
