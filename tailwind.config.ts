@@ -53,6 +53,19 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        cyberpunk: {
+          bg: "#0f0c29",
+          bg2: "#302b63",
+          bg3: "#24243e",
+          neonBlue: "#00fff7",
+          neonPink: "#ff00ea",
+          neonYellow: "#fff700",
+          neonGreen: "#39ff14",
+          neonOrange: "#ff9900",
+          neonPurple: "#a259ff",
+          neonRed: "#ff3860",
+          neonWhite: "#f4faff",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -72,6 +85,9 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      fontFamily: {
+        cyberpunk: ["Orbitron", "Share Tech Mono", "Rajdhani", "sans-serif"],
       },
     },
   },

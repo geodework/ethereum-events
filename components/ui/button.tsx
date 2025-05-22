@@ -5,21 +5,21 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-cyberpunk font-bold uppercase tracking-wide transition-all disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg:not([class*='size-'])]:size-4 shrink-0 [&_svg]:shrink-0 outline-none focus-visible:border-cyberpunk-neonBlue focus-visible:ring-cyberpunk-neonPink/70 focus-visible:ring-[3px] aria-invalid:ring-cyberpunk-neonRed/20 dark:aria-invalid:ring-cyberpunk-neonRed/40 aria-invalid:border-cyberpunk-neonRed shadow-[0_0_8px_0_#00fff7aa]",
   {
     variants: {
       variant: {
         default:
-          "bg-primary text-primary-foreground shadow-xs hover:bg-primary/90",
+          "bg-cyberpunk-neonBlue text-cyberpunk-bg font-cyberpunk border-2 border-cyberpunk-neonBlue shadow-[0_0_8px_0_#00fff7aa] hover:bg-cyberpunk-neonPink hover:border-cyberpunk-neonPink hover:text-cyberpunk-bg focus-visible:shadow-[0_0_16px_2px_#ff00ea]",
         destructive:
-          "bg-destructive text-white shadow-xs hover:bg-destructive/90 focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60",
+          "bg-cyberpunk-neonRed text-cyberpunk-neonWhite border-2 border-cyberpunk-neonRed shadow-[0_0_8px_0_#ff3860aa] hover:bg-cyberpunk-neonPink hover:border-cyberpunk-neonPink focus-visible:shadow-[0_0_16px_2px_#ff00ea]",
         outline:
-          "border bg-background shadow-xs hover:bg-accent hover:text-accent-foreground dark:bg-input/30 dark:border-input dark:hover:bg-input/50",
+          "border-2 border-cyberpunk-neonBlue bg-transparent text-cyberpunk-neonBlue hover:bg-cyberpunk-bg2 hover:text-cyberpunk-neonPink hover:border-cyberpunk-neonPink focus-visible:shadow-[0_0_16px_2px_#00fff7]",
         secondary:
-          "bg-secondary text-secondary-foreground shadow-xs hover:bg-secondary/80",
+          "bg-cyberpunk-neonPink text-cyberpunk-bg border-2 border-cyberpunk-neonPink shadow-[0_0_8px_0_#ff00ea99] hover:bg-cyberpunk-neonBlue hover:border-cyberpunk-neonBlue hover:text-cyberpunk-bg focus-visible:shadow-[0_0_16px_2px_#00fff7]",
         ghost:
-          "hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50",
-        link: "text-primary underline-offset-4 hover:underline",
+          "bg-transparent text-cyberpunk-neonBlue hover:bg-cyberpunk-bg2 hover:text-cyberpunk-neonPink focus-visible:shadow-[0_0_16px_2px_#00fff7]",
+        link: "text-cyberpunk-neonPink underline-offset-4 hover:underline hover:text-cyberpunk-neonBlue",
       },
       size: {
         default: "h-9 px-4 py-2 has-[>svg]:px-3",
