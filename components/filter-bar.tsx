@@ -44,32 +44,48 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
     deadlineSoon: false,
   })
 
-  const handleFilterChange = (key: keyof FilterState, value: string | boolean) => {
+  const handleFilterChange = (
+    key: keyof FilterState,
+    value: string | boolean
+  ) => {
     const newFilters = { ...filters, [key]: value }
     setFilters(newFilters)
     onFilterChange(newFilters)
   }
 
   return (
-    <div className="sticky top-16 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <div className="sticky top-16 z-40 w-full border-b-2 border-cyberpunk-neonBlue bg-cyberpunk-bg/80 backdrop-blur supports-[backdrop-filter]:bg-cyberpunk-bg/60">
       <div className="container flex flex-wrap items-center justify-between gap-2 py-4">
         <div className="flex flex-wrap items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
-                <MapPin className="mr-2 h-4 w-4 text-blue-500" />
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-cyberpunk-neonBlue bg-cyberpunk-bg2 text-cyberpunk-neonBlue hover:text-cyberpunk-neonPink"
+              >
+                <MapPin className="mr-2 h-4 w-4 text-cyberpunk-neonYellow" />
                 {filters.region}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-56">
-              <DropdownMenuLabel>Filter by Region</DropdownMenuLabel>
-              <DropdownMenuSeparator />
+            <DropdownMenuContent
+              align="start"
+              className="w-56 bg-cyberpunk-bg2 border-cyberpunk-neonBlue text-cyberpunk-neonWhite font-cyberpunk"
+            >
+              <DropdownMenuLabel className="text-cyberpunk-neonPink">
+                Filter by Region
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator className="bg-cyberpunk-neonBlue" />
               <DropdownMenuRadioGroup
                 value={filters.region}
                 onValueChange={(value) => handleFilterChange("region", value)}
               >
                 {regions.map((region) => (
-                  <DropdownMenuRadioItem key={region} value={region}>
+                  <DropdownMenuRadioItem
+                    key={region}
+                    value={region}
+                    className="hover:bg-cyberpunk-bg3 hover:text-cyberpunk-neonPink"
+                  >
                     {region}
                   </DropdownMenuRadioItem>
                 ))}
@@ -79,21 +95,39 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
-                <Filter className="mr-2 h-4 w-4 text-blue-500" />
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-cyberpunk-neonBlue bg-cyberpunk-bg2 text-cyberpunk-neonBlue hover:text-cyberpunk-neonPink"
+              >
+                <Filter className="mr-2 h-4 w-4 text-cyberpunk-neonPink" />
                 {filters.month}
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="start" className="w-56">
-              <DropdownMenuLabel>Filter by Month</DropdownMenuLabel>
-              <DropdownMenuSeparator />
+            <DropdownMenuContent
+              align="start"
+              className="w-56 bg-cyberpunk-bg2 border-cyberpunk-neonBlue text-cyberpunk-neonWhite font-cyberpunk"
+            >
+              <DropdownMenuLabel className="text-cyberpunk-neonPink">
+                Filter by Month
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator className="bg-cyberpunk-neonBlue" />
               <DropdownMenuRadioGroup
                 value={filters.month}
                 onValueChange={(value) => handleFilterChange("month", value)}
               >
-                <DropdownMenuRadioItem value="All Months">All Months</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem
+                  value="All Months"
+                  className="hover:bg-cyberpunk-bg3 hover:text-cyberpunk-neonPink"
+                >
+                  All Months
+                </DropdownMenuRadioItem>
                 {months.map((month) => (
-                  <DropdownMenuRadioItem key={month} value={month}>
+                  <DropdownMenuRadioItem
+                    key={month}
+                    value={month}
+                    className="hover:bg-cyberpunk-bg3 hover:text-cyberpunk-neonPink"
+                  >
                     {month}
                   </DropdownMenuRadioItem>
                 ))}
@@ -102,11 +136,11 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
           </DropdownMenu>
 
           <div className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-cyberpunk-neonBlue" />
             <Input
               type="text"
               placeholder="Search by city..."
-              className="h-9 w-[200px] border-slate-200 pl-8 text-slate-700"
+              className="h-9 w-[200px] border-cyberpunk-neonBlue pl-8 text-cyberpunk-neonWhite placeholder:text-cyberpunk-neonPink bg-cyberpunk-bg2"
               value={filters.city}
               onChange={(e) => handleFilterChange("city", e.target.value)}
             />
