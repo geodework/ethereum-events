@@ -40,10 +40,15 @@ export function EventCard({ event }: EventCardProps) {
       <CardHeader className="bg-gradient-to-r from-blue-50 to-slate-50 pb-2 py-6">
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="text-xl font-bold text-primary group-hover:text-blue-600">{event.name}</h3>
+            <h3 className="text-xl font-bold text-primary group-hover:text-blue-600">
+              {event.name}
+            </h3>
             <p className="text-sm text-slate-500">{event.description}</p>
           </div>
-          <Badge variant="outline" className="border border-blue-200 bg-white font-medium text-primary">
+          <Badge
+            variant="outline"
+            className="border border-blue-200 bg-white font-medium text-primary"
+          >
             {event.region}
           </Badge>
         </div>
@@ -57,7 +62,9 @@ export function EventCard({ event }: EventCardProps) {
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Calendar className="h-4 w-4 text-blue-500" />
-          <span className="text-slate-700">{formatDateRange(event.startDate, event.endDate)}</span>
+          <span className="text-slate-700">
+            {formatDateRange(event.startDate, event.endDate)}
+          </span>
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Flag className="h-4 w-4 text-blue-500" />

@@ -1,26 +1,28 @@
-import type React from 'react';
-import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
-import './globals.css';
-import Header from '@/components/header';
-import Footer from '@/components/footer';
-import { ThemeProvider } from '@/components/theme-provider';
+import type React from "react"
+import type { Metadata } from "next"
+import { Inter, Fredoka, Raleway } from "next/font/google"
+import "./globals.css"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
+import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ["latin"] })
+const fredoka = Fredoka({ subsets: ["latin"], weight: ["400", "700"] })
+const raleway = Raleway({ subsets: ["latin"], weight: ["400", "700"] })
 
 export const metadata: Metadata = {
-  title: 'Ethereum Events - Global Crypto Calendar',
-  description: 'Discover and plan for crypto events worldwide',
-};
+  title: "Ethereum Events - Global Crypto Calendar",
+  description: "Discover and plan for crypto events worldwide",
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+      <body className={`${raleway.className} pop-fonts`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -35,5 +37,5 @@ export default function RootLayout({
         </ThemeProvider>
       </body>
     </html>
-  );
+  )
 }

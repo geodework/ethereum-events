@@ -26,7 +26,7 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#0062ba",
+          DEFAULT: "#2563eb",
           foreground: "hsl(var(--primary-foreground))",
         },
         accent: {
@@ -52,6 +52,14 @@ const config = {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        pop: {
+          DEFAULT: "#ec4899",
+          foreground: "#fff0f6",
+        },
+        tealpop: {
+          DEFAULT: "#06b6d4",
+          foreground: "#e0f7fa",
         },
       },
       borderRadius: {

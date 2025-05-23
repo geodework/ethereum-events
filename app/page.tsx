@@ -60,7 +60,7 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-b from-white to-slate-50">
       <div className="container py-8">
         <div className="mb-8 text-center">
-          <p className="mt-2 text-lg text-slate-600">
+          <p className="mt-2 text-lg text-slate-600 text-tealpop">
             Discover, filter, and track crypto events worldwide.
           </p>
         </div>
@@ -73,14 +73,11 @@ export default function Home() {
           <TabsList className="grid w-full max-w-md grid-cols-2 border bg-white">
             <TabsTrigger
               value="calendar"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/10 data-[state=active]:to-blue-500/10 data-[state=active]:text-primary"
+              className="data-[state=active]:bg-accent"
             >
               <Calendar className="mr-2 h-4 w-4" /> Calendar View
             </TabsTrigger>
-            <TabsTrigger
-              value="list"
-              className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary/10 data-[state=active]:to-blue-500/10 data-[state=active]:text-primary"
-            >
+            <TabsTrigger value="list" className="data-[state=active]:bg-accent">
               <List className="mr-2 h-4 w-4" /> List View
             </TabsTrigger>
           </TabsList>
