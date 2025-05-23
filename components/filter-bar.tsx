@@ -44,7 +44,10 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
     deadlineSoon: false,
   })
 
-  const handleFilterChange = (key: keyof FilterState, value: string | boolean) => {
+  const handleFilterChange = (
+    key: keyof FilterState,
+    value: string | boolean
+  ) => {
     const newFilters = { ...filters, [key]: value }
     setFilters(newFilters)
     onFilterChange(newFilters)
@@ -56,8 +59,12 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
         <div className="flex flex-wrap items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
-                <MapPin className="mr-2 h-4 w-4 text-blue-500" />
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-slate-200 bg-white text-slate-700"
+              >
+                <MapPin className="mr-2 h-4 w-4 text-primary-light-500" />
                 {filters.region}
               </Button>
             </DropdownMenuTrigger>
@@ -79,8 +86,12 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
-                <Filter className="mr-2 h-4 w-4 text-blue-500" />
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-slate-200 bg-white text-slate-700"
+              >
+                <Filter className="mr-2 h-4 w-4 text-primary-light-500" />
                 {filters.month}
               </Button>
             </DropdownMenuTrigger>
@@ -91,7 +102,9 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
                 value={filters.month}
                 onValueChange={(value) => handleFilterChange("month", value)}
               >
-                <DropdownMenuRadioItem value="All Months">All Months</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="All Months">
+                  All Months
+                </DropdownMenuRadioItem>
                 {months.map((month) => (
                   <DropdownMenuRadioItem key={month} value={month}>
                     {month}
@@ -130,9 +143,9 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
             <Button
               variant="outline"
               size="sm"
-              className="h-9 border-slate-200 bg-white text-slate-700 hover:bg-blue-50 hover:text-primary"
+              className="h-9 border-slate-200 bg-white text-slate-700 hover:bg-primary-light-50 hover:text-primary"
             >
-              <SlidersHorizontal className="mr-2 h-4 w-4 text-blue-500" />
+              <SlidersHorizontal className="mr-2 h-4 w-4 text-primary-light-500" />
               Advanced Filters
             </Button>
           </DialogTrigger>

@@ -26,16 +26,18 @@ const config = {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#2563eb",
+          DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
-        },
-        accent: {
-          DEFAULT: "rgb(255 214 0)",
-          foreground: "hsl(var(--accent-foreground))",
+          strong: "#3b82f6",
+          light: "hsl(var(--primary-hue), var(--primary-saturation),96.5%)",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
+        },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
@@ -53,13 +55,9 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        pop: {
-          DEFAULT: "#ec4899",
-          foreground: "#fff0f6",
-        },
         tealpop: {
-          DEFAULT: "#06b6d4",
-          foreground: "#e0f7fa",
+          DEFAULT: "hsl(var(--tealpop))",
+          foreground: "hsl(var(--tealpop-foreground))",
         },
       },
       borderRadius: {

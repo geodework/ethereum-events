@@ -1,13 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Fredoka, Raleway } from "next/font/google"
+import { Raleway } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const inter = Inter({ subsets: ["latin"] })
-const fredoka = Fredoka({ subsets: ["latin"], weight: ["400", "700"] })
 const raleway = Raleway({ subsets: ["latin"], weight: ["400", "700"] })
 
 export const metadata: Metadata = {
