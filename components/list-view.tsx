@@ -43,9 +43,11 @@ export function ListView({ events }: ListViewProps) {
 
         return (
           <div key={month} className="mb-10">
-            <div className="mb-4 flex items-center gap-2 border-b border-slate-200 pb-2">
+            <div className="mb-4 flex items-center gap-2 border-b border-secondary-200 pb-2">
               <div className="h-5 w-1 rounded-full bg-gradient-to-b from-primary to-primary-light-400"></div>
-              <h3 className="text-xl font-semibold text-slate-900">{month}</h3>
+              <h3 className="text-xl font-semibold text-secondary-900">
+                {month}
+              </h3>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {monthEvents.map((event) => (
