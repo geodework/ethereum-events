@@ -7,6 +7,7 @@ import {
   pgEnum,
   boolean,
   varchar,
+  jsonb,
 } from "drizzle-orm/pg-core"
 import policies from "./policy"
 
@@ -87,6 +88,7 @@ export const events = pgTable(
     links: text("links").array(),
     socials: text("socials").array(),
     communities: text("communities").array(),
+    weatherMetrics: jsonb("weather_metrics"),
     createdAt: timestamp("created_at").notNull().defaultNow(),
     updatedAt: timestamp("updated_at").notNull().defaultNow(),
   },
