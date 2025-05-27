@@ -1,5 +1,5 @@
 // src/api/weather/types.ts
-export interface WeatherData {
+export interface IWeatherData {
   days: {
     tempmax: number
     tempmin: number
@@ -8,7 +8,7 @@ export interface WeatherData {
   }[]
 }
 
-export interface WeatherAverage {
+export interface IWeatherAverage {
   tempmax: number
   tempmin: number
   temp: number

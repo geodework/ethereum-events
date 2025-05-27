@@ -1,5 +1,5 @@
 import { WEATHER_API_CONFIG } from "./config"
-import type { WeatherData, WeatherAverage } from "./types"
+import type { IWeatherData, IWeatherAverage } from "./types"
 
 export class WeatherClient {
   private static instance: WeatherClient
@@ -17,7 +17,7 @@ export class WeatherClient {
     location: string,
     startDate: string,
     endDate: string
-  ): Promise<WeatherData> {
+  ): Promise<IWeatherData> {
     const url = `${WEATHER_API_CONFIG.baseUrl}/${location}/${startDate}/${endDate}?unitGroup=${WEATHER_API_CONFIG.unitGroup}&key=${WEATHER_API_CONFIG.apiKey}&include=days`
     console.log(url)
     const response = await fetch(url)
@@ -28,7 +28,7 @@ export class WeatherClient {
     return response.json()
   }
 
-  calculateWeatherAverage(weatherData: WeatherData): WeatherAverage {
+  calculateWeatherAverage(weatherData: IWeatherData): IWeatherAverage {
     if (weatherData.days.length === 0) {
       throw new Error("Cannot calculate average with no data")
     }
