@@ -4,7 +4,10 @@ import path from "path"
 import { eventCategoryEvents, eventDomainEvents, events } from "../schema"
 
 const main = async () => {
-  const eventsJsonPath = path.join(__dirname, "../output/events.json")
+  const eventsJsonPath = path.join(
+    __dirname,
+    "../output/events-with-api-data.json"
+  )
   let eventsData: any[] = []
   try {
     const fileContent = fs.readFileSync(eventsJsonPath, "utf-8")
