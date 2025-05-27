@@ -1,6 +1,6 @@
 # Events Data Operation Guide
 
-This document describes the step-by-step process for integrating Notion, generating event data, and inserting it into the database for the Ethereum Events project.
+This document describes the step-by-step process for integrating Notion, generating event data, enriching it with external API data, and inserting it into the database for the Ethereum Events project.
 
 ---
 
@@ -58,19 +58,60 @@ This document describes the step-by-step process for integrating Notion, generat
 
 ---
 
-## 3. Insert Events Data into the Database
+## 2.5. Enrich Events Data with External API (@add-external-api-data.ts)
 
-1. **Ensure the output file exists**
-   - Confirm that `db/output/events.json` is present and contains the expected data.
+1. **Run the enrichment script**
+   - This step adds external API data (e.g., weather information) to each event in the generated events data.
+   - Use pnpm and tsx to run the script:
+     ```sh
+     pnpm tsx db/script/add-external-api-data.ts
+     ```
+   - This script will:
+     - Read `db/output/events.json`.
+     - Call external APIs to enrich each event (e.g., add weather metrics).
+     - Output the enriched data to `db/output/events-with-api-data.json`.
+   - If the script throws an error about missing or invalid data, ensure that `events.json` is present and correctly formatted, then retry.
+
+#### Example Output (`db/output/events-with-api-data.json`)
+
+```json
+[
+  {
+    "name": "FarCon",
+    "countryId": 1,
+    "location": "New York, NYC, USA",
+    "venueType": null,
+    "startDateTime": "2025-05-01T00:00:00.000Z",
+    "endDateTime": "2025-05-04T00:00:00.000Z",
+    "hasTimezone": false,
+    "links": ["https://farcon.nyc/"],
+    "socials": ["https://warpcast.com/~/channel/farcon-nyc"],
+    "contacts": [],
+    "categories": [2, 3],
+    "domains": [2],
+    "weather_metrics": {
+      /* ... */
+    }
+  }
+  // ... more events
+]
+```
+
+---
+
+## 3. Insert Enriched Events Data into the Database
+
+1. **Ensure the enriched output file exists**
+   - Confirm that `db/output/events-with-api-data.json` is present and contains the expected data.
 2. **Run the insertion script**
    - Use pnpm and tsx to run the script:
      ```sh
      pnpm tsx db/script/create-events-with-relations.ts
      ```
    - This script will:
-     - Insert event records into the `events` table.
+     - Insert event records from `events-with-api-data.json` into the `events` table.
      - Create bridging records in `event_category_events` and `event_domain_events` tables for category and domain relations.
-   - If the script throws an error about missing data, return to step 2 and ensure the output is correct.
+   - If the script throws an error about missing data, return to step 2.5 and ensure the output is correct.
 
 ---
 
