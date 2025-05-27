@@ -11,9 +11,13 @@ export default function Footer() {
               <div className="rounded-full bg-accent p-1.5">
                 <Globe className="h-4 w-4 text-white" />
               </div>
-              <h3 className="text-lg font-semibold text-white">Ethereum Events</h3>
+              <h3 className="text-lg font-semibold text-white">
+                Ethereum Events
+              </h3>
             </div>
-            <p className="mt-2 text-sm text-slate-300">Discover and plan for crypto events worldwide</p>
+            <p className="mt-2 text-sm text-secondary-300">
+              Discover and plan for crypto events worldwide
+            </p>
           </div>
           <div>
             <h3 className="text-lg font-medium text-white">Links</h3>
@@ -21,7 +25,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="https://geodework.com"
-                  className="text-slate-300 hover:text-white"
+                  className="text-secondary-300 hover:text-white"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -29,12 +33,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-slate-300 hover:text-white">
+                <Link href="#" className="text-secondary-300 hover:text-white">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-slate-300 hover:text-white">
+                <Link href="#" className="text-secondary-300 hover:text-white">
                   Contact
                 </Link>
               </li>
@@ -44,12 +48,12 @@ export default function Footer() {
             <h3 className="text-lg font-medium text-white">Resources</h3>
             <ul className="mt-2 space-y-2 text-sm">
               <li>
-                <Link href="#" className="text-slate-300 hover:text-white">
+                <Link href="#" className="text-secondary-300 hover:text-white">
                   Submit Event
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-slate-300 hover:text-white">
+                <Link href="#" className="text-secondary-300 hover:text-white">
                   FAQ
                 </Link>
               </li>
@@ -59,20 +63,22 @@ export default function Footer() {
             <h3 className="text-lg font-medium text-white">Legal</h3>
             <ul className="mt-2 space-y-2 text-sm">
               <li>
-                <Link href="#" className="text-slate-300 hover:text-white">
+                <Link href="#" className="text-secondary-300 hover:text-white">
                   Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-slate-300 hover:text-white">
+                <Link href="#" className="text-secondary-300 hover:text-white">
                   Terms of Service
                 </Link>
               </li>
             </ul>
           </div>
         </div>
-        <div className="mt-8 border-t border-slate-100 pt-8 text-center text-sm text-slate-300">
-          <p>© {new Date().getFullYear()} Ethereum Events. All rights reserved.</p>
+        <div className="mt-8 border-t border-secondary-100 pt-8 text-center text-sm text-secondary-300">
+          <p>
+            © {new Date().getFullYear()} Ethereum Events. All rights reserved.
+          </p>
           <p className="mt-2">
             <Link
               href="https://geodework.com"

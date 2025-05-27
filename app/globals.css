@@ -10,16 +10,30 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 228 65% 50%;
+    --primary-hue: 217;
+    --primary-saturation: 100%;
+    --primary-lightness: 50%;
+    --primary: var(--primary-hue), var(--primary-saturation), var(--primary-lightness);
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 222 22% 57%;
+    --secondary-50: 210 40% 98%;
+    --secondary-100: 210 40% 96.1%;
+    --secondary-200: 210 40% 93%;
+    --secondary-300: 210 40% 85%;
+    --secondary-400: 210 40% 70%;
+    --secondary-500: var(--secondary);
+    --secondary-600: 215 28% 45%;
+    --secondary-700: 217 19% 27%;
+    --secondary-800: 217 28% 15%;
+    --secondary-900: 222 47% 11%;
+    --secondary-950: 222 47% 5%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 48 100% 63%;
+    --accent: 48 100% 50%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+    --tealpop: 174 100% 29%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 228 65% 50%;
@@ -33,10 +47,23 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 228 65% 50%;
+    --primary-hue: 217;
+    --primary-saturation: 100%;
+    --primary-lightness: 50%;
+    --primary: var(--primary-hue), var(--primary-saturation), var(--primary-lightness);
     --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 210 40% 70%;
+    --secondary-50: 222 47% 11%;
+    --secondary-100: 217 28% 15%;
+    --secondary-200: 217 19% 27%;
+    --secondary-300: 215 28% 45%;
+    --secondary-400: 222 22% 57%;
+    --secondary-500: var(--secondary);
+    --secondary-600: 210 40% 85%;
+    --secondary-700: 210 40% 93%;
+    --secondary-800: 210 40% 96.1%;
+    --secondary-900: 210 40% 98%;
+    --secondary-950: 0 0% 100%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
     --accent: 48 100% 63%;
@@ -46,6 +73,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 228 65% 50%;
+
   }
 }
 
@@ -56,4 +84,48 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+.pop-fonts {
+  font-family: 'Raleway', sans-serif;
+}
+
+.pop-fonts h1, .pop-fonts h2, .pop-fonts h3, .pop-fonts h4, .pop-fonts h5, .pop-fonts h6 {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.pop-fonts h1 {
+  font-size: 2.8rem;
+  line-height: 1.1;
+}
+.pop-fonts h2 {
+  font-size: 2.2rem;
+  line-height: 1.15;
+}
+.pop-fonts h3 {
+  font-size: 1.6rem;
+  line-height: 1.2;
+}
+
+.pop-fonts {
+  font-size: 1.08rem;
+}
+
+.pop-fonts p, .pop-fonts li, .pop-fonts span, .pop-fonts button {
+  font-size: 1.08rem;
+}
+
+.pop-fonts .text-lg {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.pop-fonts .text-xl {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.text-pop {
+  color: #ec4899 !important;
 }

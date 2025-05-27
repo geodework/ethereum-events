@@ -44,20 +44,27 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
     deadlineSoon: false,
   })
 
-  const handleFilterChange = (key: keyof FilterState, value: string | boolean) => {
+  const handleFilterChange = (
+    key: keyof FilterState,
+    value: string | boolean
+  ) => {
     const newFilters = { ...filters, [key]: value }
     setFilters(newFilters)
     onFilterChange(newFilters)
   }
 
   return (
-    <div className="sticky top-16 z-40 w-full border-b border-slate-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <div className="sticky top-16 z-40 w-full border-b border-secondary-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container flex flex-wrap items-center justify-between gap-2 py-4">
         <div className="flex flex-wrap items-center gap-2">
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
-                <MapPin className="mr-2 h-4 w-4 text-blue-500" />
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-secondary-200 bg-white text-secondary-700"
+              >
+                <MapPin className="mr-2 h-4 w-4 text-primary-light-500" />
                 {filters.region}
               </Button>
             </DropdownMenuTrigger>
@@ -79,8 +86,12 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="outline" size="sm" className="h-9 border-slate-200 bg-white text-slate-700">
-                <Filter className="mr-2 h-4 w-4 text-blue-500" />
+              <Button
+                variant="outline"
+                size="sm"
+                className="h-9 border-secondary-200 bg-white text-secondary-700"
+              >
+                <Filter className="mr-2 h-4 w-4 text-primary-light-500" />
                 {filters.month}
               </Button>
             </DropdownMenuTrigger>
@@ -91,7 +102,9 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
                 value={filters.month}
                 onValueChange={(value) => handleFilterChange("month", value)}
               >
-                <DropdownMenuRadioItem value="All Months">All Months</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="All Months">
+                  All Months
+                </DropdownMenuRadioItem>
                 {months.map((month) => (
                   <DropdownMenuRadioItem key={month} value={month}>
                     {month}
@@ -102,11 +115,11 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
           </DropdownMenu>
 
           <div className="relative">
-            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-slate-400" />
+            <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-secondary-400" />
             <Input
               type="text"
               placeholder="Search by city..."
-              className="h-9 w-[200px] border-slate-200 pl-8 text-slate-700"
+              className="h-9 w-[200px] border-secondary-200 pl-8 text-secondary-700"
               value={filters.city}
               onChange={(e) => handleFilterChange("city", e.target.value)}
             />
@@ -119,7 +132,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
               onCheckedChange={(checked) => handleFilterChange("deadlineSoon", checked)}
               className="data-[state=checked]:bg-accent"
             />
-            <Label htmlFor="deadline-soon" className="text-sm text-slate-700">
+            <Label htmlFor="deadline-soon" className="text-sm text-secondary-700">
               Ticket Deadline Soon
             </Label>
           </div> */}
@@ -130,9 +143,9 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
             <Button
               variant="outline"
               size="sm"
-              className="h-9 border-slate-200 bg-white text-slate-700 hover:bg-blue-50 hover:text-primary"
+              className="h-9 border-secondary-200 bg-white text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
             >
-              <SlidersHorizontal className="mr-2 h-4 w-4 text-blue-500" />
+              <SlidersHorizontal className="mr-2 h-4 w-4 text-primary-light-500" />
               Advanced Filters
             </Button>
           </DialogTrigger>
@@ -143,12 +156,12 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="quarter" className="text-right text-slate-700">
+                <Label htmlFor="quarter" className="text-right text-secondary-700">
                   Quarter
                 </Label>
                 <select
                   id="quarter"
-                  className="col-span-3 flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="col-span-3 flex h-10 w-full rounded-md border border-secondary-200 bg-white px-3 py-2 text-sm text-secondary-700 ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-secondary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <option>All Quarters</option>
                   <option>Q1 (Jan-Mar)</option>
@@ -158,12 +171,12 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
                 </select>
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="temp-range" className="text-right text-slate-700">
+                <Label htmlFor="temp-range" className="text-right text-secondary-700">
                   Temperature
                 </Label>
                 <select
                   id="temp-range"
-                  className="col-span-3 flex h-10 w-full rounded-md border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-slate-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  className="col-span-3 flex h-10 w-full rounded-md border border-secondary-200 bg-white px-3 py-2 text-sm text-secondary-700 ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-secondary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <option>Any Temperature</option>
                   <option>Cold (Below 50°F/10°C)</option>
@@ -175,7 +188,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
               <div className="grid grid-cols-4 items-center gap-4">
                 <div className="col-span-4 flex items-center space-x-2">
                   <Switch id="export-calendar" className="data-[state=checked]:bg-primary" />
-                  <Label htmlFor="export-calendar" className="text-slate-700">
+                  <Label htmlFor="export-calendar" className="text-secondary-700">
                     Show exportable events only
                   </Label>
                 </div>
