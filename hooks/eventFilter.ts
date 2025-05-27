@@ -1,12 +1,32 @@
-import { FilterState } from "@/components/filter-bar"
 import { DEFAULT_FILTERS } from "@/lib/const"
+import { IFilterState } from "@/lib/filter"
 import { type Event } from "@/lib/data"
 import { useState } from "react"
 
-export default function useEventFilter(events: Event[]) {
+export default function useEventFilter(
+  events: Event[],
+  filtersState: IFilterState
+) {
   const [filteredEvents, setFilteredEvents] = useState(events)
 
-  const handleFilterChange = (filters: FilterState) => {
+  const [filters, setFilters] = useState<IFilterState>(filtersState)
+
+  const handleChange = (key: keyof IFilterState, value: string | boolean) => {
+    const newFilters = handleFilterStateChange(key, value)
+    handleFilterEventChange(newFilters)
+  }
+
+  const handleFilterStateChange = (
+    key: keyof IFilterState,
+    value: string | boolean
+  ) => {
+    const newFilters = { ...filters, [key]: value }
+    setFilters(newFilters)
+
+    return newFilters
+  }
+
+  const handleFilterEventChange = (filters: IFilterState) => {
     let filtered = [...events]
 
     // Filter by region
@@ -51,5 +71,9 @@ export default function useEventFilter(events: Event[]) {
     setFilteredEvents(filtered)
   }
 
-  return { filteredEvents, handleFilterChange }
+  return {
+    filteredEvents,
+    filters,
+    handleChange,
+  }
 }

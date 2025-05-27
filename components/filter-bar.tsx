@@ -1,6 +1,5 @@
 "use client"
 
-import { useState } from "react"
 import { Filter, MapPin, Search, SlidersHorizontal } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -25,35 +24,14 @@ import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { regions } from "@/lib/data"
 import { DEFAULT_FILTERS, MONTHS } from "@/lib/const"
+import { IFilterState } from "@/lib/filter"
 
 interface FilterBarProps {
-  onFilterChange: (filters: FilterState) => void
+  onFilterChange: (key: keyof IFilterState, value: string | boolean) => void
+  filters: IFilterState
 }
 
-export interface FilterState {
-  region: string
-  month: string
-  city: string
-  deadlineSoon: boolean
-}
-
-export function FilterBar({ onFilterChange }: FilterBarProps) {
-  const [filters, setFilters] = useState<FilterState>({
-    region: DEFAULT_FILTERS.region,
-    month: DEFAULT_FILTERS.month,
-    city: "",
-    deadlineSoon: false,
-  })
-
-  const handleFilterChange = (
-    key: keyof FilterState,
-    value: string | boolean
-  ) => {
-    const newFilters = { ...filters, [key]: value }
-    setFilters(newFilters)
-    onFilterChange(newFilters)
-  }
-
+export function FilterBar({ onFilterChange, filters }: FilterBarProps) {
   return (
     <div className="sticky top-16 z-40 w-full border-b border-secondary-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container flex flex-wrap items-center justify-between gap-2 py-4">
@@ -74,7 +52,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
               <DropdownMenuSeparator />
               <DropdownMenuRadioGroup
                 value={filters.region}
-                onValueChange={(value) => handleFilterChange("region", value)}
+                onValueChange={(value) => onFilterChange("region", value)}
               >
                 {regions.map((region) => (
                   <DropdownMenuRadioItem key={region} value={region}>
@@ -101,7 +79,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
               <DropdownMenuSeparator />
               <DropdownMenuRadioGroup
                 value={filters.month}
-                onValueChange={(value) => handleFilterChange("month", value)}
+                onValueChange={(value) => onFilterChange("month", value)}
               >
                 <DropdownMenuRadioItem value={DEFAULT_FILTERS.month}>
                   {DEFAULT_FILTERS.month}
@@ -122,7 +100,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
               placeholder="Search by city..."
               className="h-9 w-[200px] border-secondary-200 pl-8 text-secondary-700"
               value={filters.city}
-              onChange={(e) => handleFilterChange("city", e.target.value)}
+              onChange={(e) => onFilterChange("city", e.target.value)}
             />
           </div>
 
@@ -131,7 +109,7 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
               id="deadline-soon"
               checked={filters.deadlineSoon}
               onCheckedChange={(checked) =>
-                handleFilterChange("deadlineSoon", checked)
+                onFilterChange("deadlineSoon", checked)
               }
               className="data-[state=checked]:bg-accent"
             />

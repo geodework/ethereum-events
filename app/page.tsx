@@ -1,16 +1,19 @@
 "use client"
 
-import { useState } from "react"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CalendarView } from "@/components/calendar-view"
 import { ListView } from "@/components/list-view"
-import { FilterBar, type FilterState } from "@/components/filter-bar"
+import { FilterBar } from "@/components/filter-bar"
 import { events } from "@/lib/data"
-import { Calendar, List, Globe } from "lucide-react"
+import { Calendar, List } from "lucide-react"
 import useEventFilter from "@/hooks/eventFilter"
+import { filterState } from "@/lib/filter"
 
 export default function Home() {
-  const { filteredEvents, handleFilterChange } = useEventFilter(events)
+  const { filteredEvents, filters, handleChange } = useEventFilter(
+    events,
+    filterState
+  )
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary-50">
@@ -22,7 +25,7 @@ export default function Home() {
         </div>
       </div>
 
-      <FilterBar onFilterChange={handleFilterChange} />
+      <FilterBar filters={filters} onFilterChange={handleChange} />
 
       <Tabs defaultValue="list" className="w-full">
         <div className="container py-4">
