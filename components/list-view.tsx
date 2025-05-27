@@ -1,7 +1,7 @@
 "use client"
 import { EventCard } from "./event-card"
 import type { Event } from "@/lib/data"
-import { months } from "@/lib/data"
+import { MONTHS } from "@/lib/const"
 
 interface ListViewProps {
   events: Event[]
@@ -19,7 +19,7 @@ export function ListView({ events }: ListViewProps) {
   // Group events by month
   sortedEvents.forEach((event) => {
     const month = event.startDate.getMonth()
-    const monthName = months[month]
+    const monthName = MONTHS[month]
 
     if (!eventsByMonth[monthName]) {
       eventsByMonth[monthName] = []
@@ -34,7 +34,7 @@ export function ListView({ events }: ListViewProps) {
         Events Calendar {new Date().getFullYear()}
       </h2>
 
-      {months.map((month) => {
+      {MONTHS.map((month) => {
         const monthEvents = eventsByMonth[month] || []
 
         if (monthEvents.length === 0) {

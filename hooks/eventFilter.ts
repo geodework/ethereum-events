@@ -1,4 +1,5 @@
 import { FilterState } from "@/components/filter-bar"
+import { DEFAULT_FILTERS } from "@/lib/const"
 import { type Event } from "@/lib/data"
 import { useState } from "react"
 
@@ -9,12 +10,12 @@ export default function useEventFilter(events: Event[]) {
     let filtered = [...events]
 
     // Filter by region
-    if (filters.region !== "All Regions") {
+    if (filters.region !== DEFAULT_FILTERS.region) {
       filtered = filtered.filter((event) => event.region === filters.region)
     }
 
     // Filter by month
-    if (filters.month !== "All Months") {
+    if (filters.month !== DEFAULT_FILTERS.month) {
       const monthIndex = new Date(`${filters.month} 1, 2024`).getMonth()
       filtered = filtered.filter((event) => {
         const eventStartMonth = event.startDate.getMonth()

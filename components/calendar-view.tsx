@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { EventCard } from "./event-card"
 import type { Event } from "@/lib/data"
-import { months } from "@/lib/data"
+import { MONTHS } from "@/lib/const"
 
 interface CalendarViewProps {
   events: Event[]
@@ -81,7 +81,7 @@ export function CalendarView({ events }: CalendarViewProps) {
     <div className="container py-6">
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-primary">
-          {months[currentMonth]} {currentYear}
+          {MONTHS[currentMonth]} {currentYear}
         </h2>
         <div className="flex items-center gap-2">
           <Button
@@ -154,7 +154,7 @@ export function CalendarView({ events }: CalendarViewProps) {
       </div>
 
       <h3 className="mb-4 text-xl font-semibold text-secondary-900">
-        Events in {months[currentMonth]}
+        Events in {MONTHS[currentMonth]}
       </h3>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -163,7 +163,7 @@ export function CalendarView({ events }: CalendarViewProps) {
         ))}
         {filteredEvents.length === 0 && (
           <div className="col-span-full rounded-lg border border-secondary-200 bg-secondary-50 py-12 text-center text-secondary-500">
-            No events found for {months[currentMonth]}
+            No events found for {MONTHS[currentMonth]}
           </div>
         )}
       </div>

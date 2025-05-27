@@ -1,3 +1,5 @@
+import { DEFAULT_FILTERS } from "./const"
+
 export type Event = {
   id: string
   name: string
@@ -8,7 +10,13 @@ export type Event = {
   endDate: Date
   ticketDeadline: Date
   temperature: string
-  region: "Asia" | "Europe" | "North America" | "South America" | "Africa" | "Oceania"
+  region:
+    | "Asia"
+    | "Europe"
+    | "North America"
+    | "South America"
+    | "Africa"
+    | "Oceania"
   description?: string
   website?: string
 }
@@ -157,19 +165,12 @@ export const events: Event[] = [
   },
 ]
 
-export const regions = ["All Regions", "Asia", "Europe", "North America", "South America", "Africa", "Oceania"]
-
-export const months = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+export const regions = [
+  DEFAULT_FILTERS.region,
+  "Asia",
+  "Europe",
+  "North America",
+  "South America",
+  "Africa",
+  "Oceania",
 ]

@@ -23,7 +23,8 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
-import { months, regions } from "@/lib/data"
+import { regions } from "@/lib/data"
+import { DEFAULT_FILTERS, MONTHS } from "@/lib/const"
 
 interface FilterBarProps {
   onFilterChange: (filters: FilterState) => void
@@ -38,8 +39,8 @@ export interface FilterState {
 
 export function FilterBar({ onFilterChange }: FilterBarProps) {
   const [filters, setFilters] = useState<FilterState>({
-    region: "All Regions",
-    month: "All Months",
+    region: DEFAULT_FILTERS.region,
+    month: DEFAULT_FILTERS.month,
     city: "",
     deadlineSoon: false,
   })
@@ -102,10 +103,10 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
                 value={filters.month}
                 onValueChange={(value) => handleFilterChange("month", value)}
               >
-                <DropdownMenuRadioItem value="All Months">
-                  All Months
+                <DropdownMenuRadioItem value={DEFAULT_FILTERS.month}>
+                  {DEFAULT_FILTERS.month}
                 </DropdownMenuRadioItem>
-                {months.map((month) => (
+                {MONTHS.map((month) => (
                   <DropdownMenuRadioItem key={month} value={month}>
                     {month}
                   </DropdownMenuRadioItem>
@@ -125,20 +126,25 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
             />
           </div>
 
-          {/* <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2">
             <Switch
               id="deadline-soon"
               checked={filters.deadlineSoon}
-              onCheckedChange={(checked) => handleFilterChange("deadlineSoon", checked)}
+              onCheckedChange={(checked) =>
+                handleFilterChange("deadlineSoon", checked)
+              }
               className="data-[state=checked]:bg-accent"
             />
-            <Label htmlFor="deadline-soon" className="text-sm text-secondary-700">
-              Ticket Deadline Soon
+            <Label
+              htmlFor="deadline-soon"
+              className="text-sm text-secondary-700"
+            >
+              Only Upcomng Events
             </Label>
-          </div> */}
+          </div>
         </div>
 
-        {/* <Dialog>
+        <Dialog>
           <DialogTrigger asChild>
             <Button
               variant="outline"
@@ -152,11 +158,16 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
           <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
               <DialogTitle>Advanced Filters</DialogTitle>
-              <DialogDescription>Fine-tune your event search with additional filters.</DialogDescription>
+              <DialogDescription>
+                Fine-tune your event search with additional filters.
+              </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="quarter" className="text-right text-secondary-700">
+                <Label
+                  htmlFor="quarter"
+                  className="text-right text-secondary-700"
+                >
                   Quarter
                 </Label>
                 <select
@@ -171,7 +182,10 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
                 </select>
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
-                <Label htmlFor="temp-range" className="text-right text-secondary-700">
+                <Label
+                  htmlFor="temp-range"
+                  className="text-right text-secondary-700"
+                >
                   Temperature
                 </Label>
                 <select
@@ -187,15 +201,21 @@ export function FilterBar({ onFilterChange }: FilterBarProps) {
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
                 <div className="col-span-4 flex items-center space-x-2">
-                  <Switch id="export-calendar" className="data-[state=checked]:bg-primary" />
-                  <Label htmlFor="export-calendar" className="text-secondary-700">
+                  <Switch
+                    id="export-calendar"
+                    className="data-[state=checked]:bg-primary"
+                  />
+                  <Label
+                    htmlFor="export-calendar"
+                    className="text-secondary-700"
+                  >
                     Show exportable events only
                   </Label>
                 </div>
               </div>
             </div>
           </DialogContent>
-        </Dialog> */}
+        </Dialog>
       </div>
     </div>
   )
