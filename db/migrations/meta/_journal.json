@@ -120,6 +120,20 @@
       "when": 1747112423696,
       "tag": "0016_chief_sleeper",
       "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "7",
+      "when": 1748222607498,
+      "tag": "0017_orange_loners",
+      "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1748259861996,
+      "tag": "0018_brave_captain_flint",
+      "breakpoints": true
     }
   ]
 }
