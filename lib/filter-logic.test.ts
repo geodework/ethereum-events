@@ -7,6 +7,7 @@ import {
   // DeadlineSoonFilter,
   applyAllFilters,
   UpcomingOrOngoingFilter,
+  VenueTypeFilter,
 } from "./filter-logic"
 import { DEFAULT_FILTERS } from "./const"
 import type { IFilterState } from "./filter"
@@ -38,7 +39,7 @@ const baseEvents: TEventWithRelations[] = [
     country: "Czech Republic",
     categories: ["Hackathon"],
     domains: ["Ethereum"],
-    venue_type: "in_person",
+    venue_type: "virtual",
     start_date_time: "2025-05-31T10:00:00+02:00",
     end_date_time: "2025-06-02T18:00:00+02:00",
     links: ["https://ethprague.com"],
@@ -71,6 +72,7 @@ const defaultFilters: IFilterState = {
   month: DEFAULT_FILTERS.month,
   city: "",
   isUpcomingOrOngoing: false,
+  venueType: DEFAULT_FILTERS.venueType,
 }
 
 describe("RegionFilter", () => {
@@ -185,6 +187,37 @@ describe("UpcomingOrOngoingFilter", () => {
   })
 })
 
+describe("VenueTypeFilter", () => {
+  let filters: IFilterState
+  beforeEach(() => {
+    filters = defaultFilters
+  })
+  it("returns all events if venueType is default", () => {
+    const filter = new VenueTypeFilter()
+    expect(filter.apply(baseEvents, filters)).toEqual(baseEvents)
+  })
+  it("filters by venueType", () => {
+    const type = "in_person"
+    const filter = new VenueTypeFilter()
+    filters.venueType = type
+    const result = filter.apply(
+      [
+        {
+          ...baseEvents[0],
+          venue_type: type,
+        },
+        {
+          ...baseEvents[1],
+          venue_type: "virtual",
+        },
+      ],
+      filters
+    )
+    expect(result.length).toBe(1)
+    expect(result[0].venue_type).toBe(type)
+  })
+})
+
 describe("applyAllFilters", () => {
   let filters: IFilterState
   beforeEach(() => {
@@ -193,6 +226,7 @@ describe("applyAllFilters", () => {
       month: DEFAULT_FILTERS.month,
       city: "tokyo",
       isUpcomingOrOngoing: false,
+      venueType: "in_person",
     }
   })
   it("applies all filters in sequence", () => {

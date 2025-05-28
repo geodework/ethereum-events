@@ -18,4 +18,5 @@ export const DEFAULT_FILTERS = {
   month: "All Months",
   domain: "All Domains",
   category: "All Categories",
+  venueType: "All Venue Types",
 }

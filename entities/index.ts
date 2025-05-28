@@ -1,6 +1,11 @@
 import { IWeatherAverage } from "@/api/weather/types"
+import { DEFAULT_FILTERS } from "@/lib/const"
 
-type TVenueType = "in_person" | "virtual" | "hybrid"
+export type TVenueType =
+  | "in_person"
+  | "virtual"
+  | "hybrid"
+  | (typeof DEFAULT_FILTERS)["venueType"]
 
 export type TEventWithRelations = {
   id: number

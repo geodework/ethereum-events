@@ -67,11 +67,22 @@ export class UpcomingOrOngoingFilter implements EventFilter {
   }
 }
 
+export class VenueTypeFilter implements EventFilter {
+  apply(
+    events: TEventWithRelations[],
+    filters: IFilterState
+  ): TEventWithRelations[] {
+    if (filters.venueType === DEFAULT_FILTERS.venueType) return events
+    return events.filter((event) => event.venue_type === filters.venueType)
+  }
+}
+
 export const allEventFilters: EventFilter[] = [
   new RegionFilter(),
   new MonthFilter(),
   new CityFilter(),
   new UpcomingOrOngoingFilter(),
+  new VenueTypeFilter(),
 ]
 
 export function applyAllFilters(
