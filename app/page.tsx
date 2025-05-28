@@ -1,20 +1,12 @@
 "use client"
-
+import Link from "next/link"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CalendarView } from "@/components/calendar-view"
 import { ListView } from "@/components/list-view"
 import { FilterBar } from "@/components/filter-bar"
-import { events } from "@/lib/data"
 import { Calendar, List } from "lucide-react"
-import useEventFilter from "@/hooks/eventFilter"
-import { filterState } from "@/lib/filter"
 
 export default function Home() {
-  const { filteredEvents, filters, handleChange } = useEventFilter(
-    events,
-    filterState
-  )
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary-50">
       <div className="container py-8">
@@ -25,7 +17,7 @@ export default function Home() {
         </div>
       </div>
 
-      <FilterBar filters={filters} onFilterChange={handleChange} />
+      <FilterBar />
 
       <Tabs defaultValue="list" className="w-full">
         <div className="container py-4">
@@ -41,13 +33,15 @@ export default function Home() {
             </TabsTrigger>
           </TabsList>
         </div>
-
+        <Link href="/temp" className="text-xl font-bold text-white">
+          DDD
+        </Link>
         <TabsContent value="calendar" className="mt-0 bg-white">
-          <CalendarView events={filteredEvents} />
+          <CalendarView />
         </TabsContent>
 
         <TabsContent value="list" className="mt-0 bg-white">
-          <ListView events={filteredEvents} />
+          <ListView />
         </TabsContent>
       </Tabs>
     </div>

@@ -4,14 +4,11 @@ import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { EventCard } from "./event-card"
-import type { Event } from "@/lib/data"
 import { MONTHS } from "@/lib/const"
+import { useFilterStore } from "@/hooks/eventFilter"
 
-interface CalendarViewProps {
-  events: Event[]
-}
-
-export function CalendarView({ events }: CalendarViewProps) {
+export function CalendarView() {
+  const { filteredEvents: events } = useFilterStore()
   const [currentDate, setCurrentDate] = useState(new Date())
   const currentMonth = currentDate.getMonth()
   const currentYear = currentDate.getFullYear()

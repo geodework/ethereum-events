@@ -2,12 +2,10 @@
 import { EventCard } from "./event-card"
 import type { Event } from "@/lib/data"
 import { MONTHS } from "@/lib/const"
+import { useFilterStore } from "@/hooks/eventFilter"
 
-interface ListViewProps {
-  events: Event[]
-}
-
-export function ListView({ events }: ListViewProps) {
+export function ListView() {
+  const { filteredEvents: events } = useFilterStore()
   // Group events by month
   const eventsByMonth: Record<string, Event[]> = {}
 
