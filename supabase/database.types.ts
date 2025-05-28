@@ -180,7 +180,7 @@ export type Database = {
       }
       events: {
         Row: {
-          contacts: string[] | null
+          communities: string[] | null
           country_id: number | null
           created_at: string
           end_date_time: string | null
@@ -193,9 +193,10 @@ export type Database = {
           start_date_time: string | null
           updated_at: string
           venue_type: Database["public"]["Enums"]["venue_type_enum"] | null
+          weather_metrics: Json | null
         }
         Insert: {
-          contacts?: string[] | null
+          communities?: string[] | null
           country_id?: number | null
           created_at?: string
           end_date_time?: string | null
@@ -208,9 +209,10 @@ export type Database = {
           start_date_time?: string | null
           updated_at?: string
           venue_type?: Database["public"]["Enums"]["venue_type_enum"] | null
+          weather_metrics?: Json | null
         }
         Update: {
-          contacts?: string[] | null
+          communities?: string[] | null
           country_id?: number | null
           created_at?: string
           end_date_time?: string | null
@@ -223,6 +225,7 @@ export type Database = {
           start_date_time?: string | null
           updated_at?: string
           venue_type?: Database["public"]["Enums"]["venue_type_enum"] | null
+          weather_metrics?: Json | null
         }
         Relationships: [
           {
