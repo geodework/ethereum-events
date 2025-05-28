@@ -1,57 +1,68 @@
-import { describe, it, expect, beforeEach } from "vitest"
+import { describe, it, expect, beforeEach, afterEach } from "vitest"
+import { vi } from "vitest"
 import {
   RegionFilter,
   MonthFilter,
   CityFilter,
-  DeadlineSoonFilter,
+  // DeadlineSoonFilter,
   applyAllFilters,
+  UpcomingOrOngoingFilter,
 } from "./filter-logic"
 import { DEFAULT_FILTERS } from "./const"
-import type { Event } from "./data"
 import type { IFilterState } from "./filter"
+import { TEventWithRelations } from "@/entities"
 
-const baseEvents: Event[] = [
+const baseEvents: TEventWithRelations[] = [
   {
-    id: "1",
+    id: 1,
     name: "ETHDenver",
-    city: "Denver",
-    country: "USA",
-    countryCode: "US",
-    startDate: new Date("2024-02-23"),
-    endDate: new Date("2024-03-03"),
-    ticketDeadline: new Date(Date.now() + 10 * 24 * 60 * 60 * 1000), // 10 days from now
-    temperature: "35°F / 2°C",
+    location: "Denver, USA",
     region: "North America",
-    description: "desc",
-    website: "https://ethdenver.com",
+    country: "USA",
+    categories: ["Hackathon", "Conference"],
+    domains: ["Ethereum", "Web3"],
+    venue_type: "in_person",
+    start_date_time: "2025-02-23T09:00:00-07:00",
+    end_date_time: "2025-03-03T18:00:00-07:00",
+    links: ["https://ethdenver.com"],
+    socials: ["https://twitter.com/ETHDenver"],
+    communities: ["https://t.me/ethdenver"],
+    has_timezone: true,
+    weather_metrics: [{ tempmax: 5, tempmin: -5, temp: 0, humidity: 60 }],
   },
   {
-    id: "2",
+    id: 2,
     name: "ETHPrague",
-    city: "Prague",
-    country: "Czech Republic",
-    countryCode: "CZ",
-    startDate: new Date("2024-05-31"),
-    endDate: new Date("2024-06-02"),
-    ticketDeadline: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
-    temperature: "68°F / 20°C",
+    location: "Prague, Czech Republic",
     region: "Europe",
-    description: "desc",
-    website: "https://ethprague.com",
+    country: "Czech Republic",
+    categories: ["Hackathon"],
+    domains: ["Ethereum"],
+    venue_type: "in_person",
+    start_date_time: "2025-05-31T10:00:00+02:00",
+    end_date_time: "2025-06-02T18:00:00+02:00",
+    links: ["https://ethprague.com"],
+    socials: ["https://twitter.com/ETHPrague"],
+    communities: ["https://t.me/ethprague"],
+    has_timezone: true,
+    weather_metrics: [{ tempmax: 22, tempmin: 12, temp: 17, humidity: 55 }],
   },
   {
-    id: "3",
+    id: 3,
     name: "ETHTokyo",
-    city: "Tokyo",
-    country: "Japan",
-    countryCode: "JP",
-    startDate: new Date("2024-04-12"),
-    endDate: new Date("2024-04-14"),
-    ticketDeadline: new Date(Date.now() + 5 * 24 * 60 * 60 * 1000), // 5 days from now
-    temperature: "59°F / 15°C",
+    location: "Tokyo, Japan",
     region: "Asia",
-    description: "desc",
-    website: "https://ethtokyo.com",
+    country: "Japan",
+    categories: ["Hackathon"],
+    domains: ["Ethereum"],
+    venue_type: "in_person",
+    start_date_time: "2025-04-12T09:00:00+09:00",
+    end_date_time: "2025-04-14T18:00:00+09:00",
+    links: ["https://ethtokyo.com"],
+    socials: ["https://twitter.com/ETHTokyo"],
+    communities: ["https://t.me/ethtokyo"],
+    has_timezone: true,
+    weather_metrics: [{ tempmax: 18, tempmin: 10, temp: 14, humidity: 70 }],
   },
 ]
 
@@ -59,7 +70,7 @@ const defaultFilters: IFilterState = {
   region: DEFAULT_FILTERS.region,
   month: DEFAULT_FILTERS.month,
   city: "",
-  deadlineSoon: false,
+  isUpcomingOrOngoing: false,
 }
 
 describe("RegionFilter", () => {
@@ -112,27 +123,65 @@ describe("CityFilter", () => {
     filters.city = "tokyo"
     const result = filter.apply(baseEvents, filters)
     expect(result.length).toBe(1)
-    expect(result[0].city).toBe("Tokyo")
+    expect(result[0].location).toBe("Tokyo, Japan")
   })
 })
 
-describe("DeadlineSoonFilter", () => {
+describe("UpcomingOrOngoingFilter", () => {
   let filters: IFilterState
   beforeEach(() => {
     filters = defaultFilters
   })
-  it("returns all events if deadlineSoon is false", () => {
-    const filter = new DeadlineSoonFilter()
+  afterEach(() => {
+    vi.useRealTimers()
+  })
+  it("returns all events if isUpcomingOrOngoing is false", () => {
+    filters.isUpcomingOrOngoing = false
+    const filter = new UpcomingOrOngoingFilter()
     expect(filter.apply(baseEvents, filters)).toEqual(baseEvents)
   })
-  it("filters by deadlineSoon", () => {
-    const filter = new DeadlineSoonFilter()
-    filters.deadlineSoon = true
+  it("filters by upcoming or ongoing", () => {
+    vi.setSystemTime(new Date("2025-04-15T00:00:00Z"))
+    const filter = new UpcomingOrOngoingFilter()
+    filters.isUpcomingOrOngoing = true
     const result = filter.apply(baseEvents, filters)
-    // Only events with ticketDeadline within 14 days
-    expect(result.some((e) => e.name === "ETHDenver")).toBe(true)
-    expect(result.some((e) => e.name === "ETHTokyo")).toBe(true)
-    expect(result.some((e) => e.name === "ETHPrague")).toBe(false)
+    expect(result.length).toBe(1)
+    expect(result[0].name).toBe("ETHPrague")
+  })
+
+  it("filters by ongoing", () => {
+    const currentTime = new Date("2025-04-01T00:00:00Z")
+    vi.setSystemTime(currentTime)
+    const filter = new UpcomingOrOngoingFilter()
+    filters.isUpcomingOrOngoing = true
+
+    const result = filter.apply(
+      [
+        {
+          ...baseEvents[0],
+          end_date_time: currentTime.toISOString(),
+        },
+      ],
+      filters
+    )
+    expect(result.length).toBe(1)
+  })
+
+  it("filters by finished by 1 second", () => {
+    vi.setSystemTime(new Date("2025-04-01T00:00:01Z"))
+    const filter = new UpcomingOrOngoingFilter()
+    filters.isUpcomingOrOngoing = true
+
+    const result = filter.apply(
+      [
+        {
+          ...baseEvents[0],
+          end_date_time: new Date("2025-04-01T00:00:00Z").toISOString(),
+        },
+      ],
+      filters
+    )
+    expect(result.length).toBe(0)
   })
 })
 
@@ -143,13 +192,13 @@ describe("applyAllFilters", () => {
       region: "Asia",
       month: DEFAULT_FILTERS.month,
       city: "tokyo",
-      deadlineSoon: true,
+      isUpcomingOrOngoing: false,
     }
   })
   it("applies all filters in sequence", () => {
     const result = applyAllFilters(baseEvents, filters)
     expect(result.length).toBe(1)
-    expect(result[0].city).toBe("Tokyo")
+    expect(result[0].location).toBe("Tokyo, Japan")
     expect(result[0].region).toBe("Asia")
   })
 })
