@@ -8,6 +8,11 @@ import { applyAllFilters } from "@/lib/filter-logic"
 interface FilterStore {
   filters: IFilterState
   filteredEvents: TEventWithRelations[]
+  applyFilters: () => void
+  setFilters: (
+    key: keyof IFilterState,
+    value: string | boolean | string[]
+  ) => void
   handleChange: (key: keyof IFilterState, value: string | boolean) => void
 }
 
@@ -22,6 +27,13 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
     isUpcomingOrOngoing: false,
   },
   filteredEvents: events,
+  setFilters: (key, value) => {
+    const newFilters = { ...get().filters, [key]: value }
+    set({ filters: newFilters })
+  },
+  applyFilters: () => {
+    set({ filteredEvents: filterEvents(get().filters) })
+  },
   handleChange: (key, value) => {
     const newFilters = { ...get().filters, [key]: value }
     set({ filters: newFilters })
