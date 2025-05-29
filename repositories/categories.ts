@@ -5,5 +5,5 @@ export const getCategories = async () => {
   if (error) {
     throw error
   }
-  return data
+  return data.map((category) => category.name)
 }
