@@ -56,6 +56,22 @@ export class CityFilter implements EventFilter {
   }
 }
 
+export class CategoryFilter implements EventFilter {
+  apply(
+    events: TEventWithRelations[],
+    filters: IFilterState
+  ): TEventWithRelations[] {
+    if (
+      filters.categories.length === 1 &&
+      filters.categories[0] === DEFAULT_FILTERS.category
+    )
+      return events
+    return events.filter((event) =>
+      filters.categories.some((category) => event.categories.includes(category))
+    )
+  }
+}
+
 export class UpcomingOrOngoingFilter implements EventFilter {
   apply(
     events: TEventWithRelations[],
@@ -81,6 +97,7 @@ export const allEventFilters: EventFilter[] = [
   new RegionFilter(),
   new MonthFilter(),
   new CityFilter(),
+  new CategoryFilter(),
   new UpcomingOrOngoingFilter(),
   new VenueTypeFilter(),
 ]
