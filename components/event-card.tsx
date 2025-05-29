@@ -60,7 +60,7 @@ export function EventCard({ event }: EventCardProps) {
         <div className="flex items-center gap-2 text-sm">
           <Thermometer className="h-4 w-4 text-primary-light-500" />
           <span className="text-secondary-700">
-            Avg. Temp: {event.weatherMetrics.temp}°C
+            Avg. Temp: {event?.weatherMetrics?.temp}°C
           </span>
         </div>
       </CardContent>
