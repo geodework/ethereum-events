@@ -112,6 +112,7 @@ export const allEventFilters: EventFilter[] = [
   new RegionFilter(),
   new MonthFilter(),
   new CityFilter(),
+  new DomainFilter(),
   new CategoryFilter(),
   new UpcomingOrOngoingFilter(),
   new VenueTypeFilter(),

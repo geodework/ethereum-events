@@ -22,12 +22,14 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
-import { regions } from "@/lib/data"
+import { categories, domains, regions } from "@/lib/data"
 import { DEFAULT_FILTERS, MONTHS } from "@/lib/filter"
 import { useFilterStore } from "@/hooks/eventFilter"
+import { useState } from "react"
 
 export function FilterBar() {
-  const { filters, handleChange } = useFilterStore()
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const { applyFilters, filters, handleChange, setFilters } = useFilterStore()
 
   return (
     <div className="sticky top-16 z-40 w-full border-b border-secondary-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
@@ -119,18 +121,24 @@ export function FilterBar() {
           </div>
         </div>
 
-        <Dialog>
+        <Dialog open={isDialogOpen}>
           <DialogTrigger asChild>
             <Button
               variant="outline"
               size="sm"
               className="h-9 border-secondary-200 bg-white text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
+              onClick={() => setIsDialogOpen(true)}
             >
               <SlidersHorizontal className="mr-2 h-4 w-4 text-primary-light-500" />
               Advanced Filters
             </Button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[425px]">
+          <DialogContent
+            className="sm:max-w-[425px]"
+            onOpenChange={(open) => {
+              setIsDialogOpen(open)
+            }}
+          >
             <DialogHeader>
               <DialogTitle>Advanced Filters</DialogTitle>
               <DialogDescription>
@@ -143,17 +151,19 @@ export function FilterBar() {
                   htmlFor="quarter"
                   className="text-right text-secondary-700"
                 >
-                  Quarter
+                  Domains
                 </Label>
                 <select
-                  id="quarter"
+                  id="domain"
                   className="col-span-3 flex h-10 w-full rounded-md border border-secondary-200 bg-white px-3 py-2 text-sm text-secondary-700 ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-secondary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  value={filters.domains[0]}
+                  onChange={(e) => setFilters("domains", [e.target.value])}
                 >
-                  <option>All Quarters</option>
-                  <option>Q1 (Jan-Mar)</option>
-                  <option>Q2 (Apr-Jun)</option>
-                  <option>Q3 (Jul-Sep)</option>
-                  <option>Q4 (Oct-Dec)</option>
+                  {domains.map((domain) => (
+                    <option key={domain} value={domain}>
+                      {domain}
+                    </option>
+                  ))}
                 </select>
               </div>
               <div className="grid grid-cols-4 items-center gap-4">
@@ -161,32 +171,33 @@ export function FilterBar() {
                   htmlFor="temp-range"
                   className="text-right text-secondary-700"
                 >
-                  Temperature
+                  Categories
                 </Label>
                 <select
                   id="temp-range"
                   className="col-span-3 flex h-10 w-full rounded-md border border-secondary-200 bg-white px-3 py-2 text-sm text-secondary-700 ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-secondary-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                  value={filters.categories[0]}
+                  onChange={(e) => setFilters("categories", [e.target.value])}
                 >
-                  <option>Any Temperature</option>
-                  <option>Cold (Below 50°F/10°C)</option>
-                  <option>Mild (50-70°F/10-21°C)</option>
-                  <option>Warm (70-85°F/21-29°C)</option>
-                  <option>Hot (Above 85°F/29°C)</option>
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
                 </select>
               </div>
-              <div className="grid grid-cols-4 items-center gap-4">
-                <div className="col-span-4 flex items-center space-x-2">
-                  <Switch
-                    id="export-calendar"
-                    className="data-[state=checked]:bg-primary"
-                  />
-                  <Label
-                    htmlFor="export-calendar"
-                    className="text-secondary-700"
-                  >
-                    Show exportable events only
-                  </Label>
-                </div>
+              <div className="w-full items-center mt-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full py-4 border-secondary-200 bg-accent text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
+                  onClick={() => {
+                    applyFilters()
+                    setIsDialogOpen(false)
+                  }}
+                >
+                  Apply Filters
+                </Button>
               </div>
             </div>
           </DialogContent>
