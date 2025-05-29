@@ -15,12 +15,12 @@ export type TEventWithRelations = {
   country: string
   categories: string[]
   domains: string[]
-  venue_type: TVenueType
-  start_date_time: Date
-  end_date_time: Date
+  venueType: TVenueType
+  startDateTime: Date
+  endDateTime: Date
   links: string[]
   socials: string[]
   communities: string[]
-  has_timezone: boolean
-  weather_metrics: IWeatherAverage[]
+  hasTimezone: boolean
+  weatherMetrics: IWeatherAverage
 }

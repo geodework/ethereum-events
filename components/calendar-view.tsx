@@ -26,10 +26,10 @@ export function CalendarView() {
 
   // Filter events for the current month
   const filteredEvents = events.filter((event) => {
-    const eventStartMonth = event.startDate.getMonth()
-    const eventStartYear = event.startDate.getFullYear()
-    const eventEndMonth = event.endDate.getMonth()
-    const eventEndYear = event.endDate.getFullYear()
+    const eventStartMonth = event.startDateTime.getMonth()
+    const eventStartYear = event.startDateTime.getFullYear()
+    const eventEndMonth = event.endDateTime.getMonth()
+    const eventEndYear = event.endDateTime.getFullYear()
 
     // Include events that start, end, or span the current month
     return (
@@ -56,8 +56,8 @@ export function CalendarView() {
 
     // Check if there are events on this day
     const dayEvents = events.filter((event) => {
-      const eventStart = new Date(event.startDate)
-      const eventEnd = new Date(event.endDate)
+      const eventStart = new Date(event.startDateTime)
+      const eventEnd = new Date(event.endDateTime)
 
       // Reset time part for comparison
       eventStart.setHours(0, 0, 0, 0)

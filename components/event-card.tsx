@@ -43,7 +43,7 @@ export function EventCard({ event }: EventCardProps) {
             <h3 className="text-xl font-bold text-primary group-hover:text-primary-light-600">
               {event.name}
             </h3>
-            <p className="text-sm text-secondary-500">{event.description}</p>
+            {/* <p className="text-sm text-secondary-500">{event.description}</p> */}
           </div>
           <Badge
             variant="outline"
@@ -56,17 +56,15 @@ export function EventCard({ event }: EventCardProps) {
       <CardContent className="space-y-3 p-4 pb-2">
         <div className="flex items-center gap-2 text-sm">
           <MapPin className="h-4 w-4 text-primary-light-500" />
-          <span className="text-secondary-700">
-            {event.city}, {event.country}
-          </span>
+          <span className="text-secondary-700">{event.location}</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Calendar className="h-4 w-4 text-primary-light-500" />
           <span className="text-secondary-700">
-            {formatDateRange(event.startDate, event.endDate)}
+            {formatDateRange(event.startDateTime, event.endDateTime)}
           </span>
         </div>
-        <div className="flex items-center gap-2 text-sm">
+        {/* <div className="flex items-center gap-2 text-sm">
           <Flag className="h-4 w-4 text-primary-light-500" />
           <span className="text-secondary-700">
             Ticket Deadline: {formatDeadline(event.ticketDeadline)}
@@ -76,11 +74,11 @@ export function EventCard({ event }: EventCardProps) {
               </Badge>
             )}
           </span>
-        </div>
+        </div> */}
         <div className="flex items-center gap-2 text-sm">
           <Thermometer className="h-4 w-4 text-primary-light-500" />
           <span className="text-secondary-700">
-            Avg. Temp: {event.temperature}
+            Avg. Temp: {event.weatherMetrics.temp}°C
           </span>
         </div>
       </CardContent>

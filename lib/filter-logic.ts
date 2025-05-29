@@ -28,8 +28,8 @@ export class MonthFilter implements EventFilter {
     // Year is not important, we just need to get the month index.
     const monthIndex = new Date(`${filters.month} 1, 9999`).getMonth()
     return events.filter((event) => {
-      const eventStartMonth = event.start_date_time.getMonth()
-      const eventEndMonth = event.end_date_time.getMonth()
+      const eventStartMonth = event.startDateTime.getMonth()
+      const eventEndMonth = event.endDateTime.getMonth()
       return (
         eventStartMonth === monthIndex ||
         eventEndMonth === monthIndex ||
@@ -94,7 +94,7 @@ export class UpcomingOrOngoingFilter implements EventFilter {
   ): TEventWithRelations[] {
     if (!filters.isUpcomingOrOngoing) return events
     const now = new Date()
-    return events.filter((event) => new Date(event.end_date_time) >= now)
+    return events.filter((event) => new Date(event.endDateTime) >= now)
   }
 }
 
@@ -104,7 +104,7 @@ export class VenueTypeFilter implements EventFilter {
     filters: IFilterState
   ): TEventWithRelations[] {
     if (filters.venueType === DEFAULT_FILTERS.venueType) return events
-    return events.filter((event) => event.venue_type === filters.venueType)
+    return events.filter((event) => event.venueType === filters.venueType)
   }
 }
 

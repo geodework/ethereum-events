@@ -23,14 +23,14 @@ const baseEvents: TEventWithRelations[] = [
     country: "USA",
     categories: ["Hackathon", "Conference"],
     domains: ["Ethereum", "Web3"],
-    venue_type: "in_person",
-    start_date_time: new Date("2025-02-23T09:00:00-07:00"),
-    end_date_time: new Date("2025-03-03T18:00:00-07:00"),
+    venueType: "in_person",
+    startDateTime: new Date("2025-02-23T09:00:00-07:00"),
+    endDateTime: new Date("2025-03-03T18:00:00-07:00"),
     links: ["https://ethdenver.com"],
     socials: ["https://twitter.com/ETHDenver"],
     communities: ["https://t.me/ethdenver"],
-    has_timezone: true,
-    weather_metrics: [{ tempmax: 5, tempmin: -5, temp: 0, humidity: 60 }],
+    hasTimezone: true,
+    weatherMetrics: { tempmax: 5, tempmin: -5, temp: 0, humidity: 60 },
   },
   {
     id: 2,
@@ -40,14 +40,14 @@ const baseEvents: TEventWithRelations[] = [
     country: "Czech Republic",
     categories: ["Workshop"],
     domains: ["NFT"],
-    venue_type: "virtual",
-    start_date_time: new Date("2025-05-31T10:00:00+02:00"),
-    end_date_time: new Date("2025-06-02T18:00:00+02:00"),
+    venueType: "virtual",
+    startDateTime: new Date("2025-05-31T10:00:00+02:00"),
+    endDateTime: new Date("2025-06-02T18:00:00+02:00"),
     links: ["https://ethprague.com"],
     socials: ["https://twitter.com/ETHPrague"],
     communities: ["https://t.me/ethprague"],
-    has_timezone: true,
-    weather_metrics: [{ tempmax: 22, tempmin: 12, temp: 17, humidity: 55 }],
+    hasTimezone: true,
+    weatherMetrics: { tempmax: 22, tempmin: 12, temp: 17, humidity: 55 },
   },
   {
     id: 3,
@@ -57,14 +57,14 @@ const baseEvents: TEventWithRelations[] = [
     country: "Japan",
     categories: ["Hackathon"],
     domains: ["Ethereum"],
-    venue_type: "in_person",
-    start_date_time: new Date("2025-04-12T09:00:00+09:00"),
-    end_date_time: new Date("2025-04-14T18:00:00+09:00"),
+    venueType: "in_person",
+    startDateTime: new Date("2025-04-12T09:00:00+09:00"),
+    endDateTime: new Date("2025-04-14T18:00:00+09:00"),
     links: ["https://ethtokyo.com"],
     socials: ["https://twitter.com/ETHTokyo"],
     communities: ["https://t.me/ethtokyo"],
-    has_timezone: true,
-    weather_metrics: [{ tempmax: 18, tempmin: 10, temp: 14, humidity: 70 }],
+    hasTimezone: true,
+    weatherMetrics: { tempmax: 18, tempmin: 10, temp: 14, humidity: 70 },
   },
 ]
 
@@ -245,17 +245,17 @@ describe("VenueTypeFilter", () => {
       [
         {
           ...baseEvents[0],
-          venue_type: type,
+          venueType: type,
         },
         {
           ...baseEvents[1],
-          venue_type: "virtual",
+          venueType: "virtual",
         },
       ],
       filters
     )
     expect(result.length).toBe(1)
-    expect(result[0].venue_type).toBe(type)
+    expect(result[0].venueType).toBe(type)
   })
 })
 
