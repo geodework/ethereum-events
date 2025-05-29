@@ -9,6 +9,7 @@ import {
   UpcomingOrOngoingFilter,
   VenueTypeFilter,
   CategoryFilter,
+  DomainFilter,
 } from "./filter-logic"
 import { DEFAULT_FILTERS } from "./const"
 import type { IFilterState } from "./filter"
@@ -39,7 +40,7 @@ const baseEvents: TEventWithRelations[] = [
     region: "Europe",
     country: "Czech Republic",
     categories: ["Workshop"],
-    domains: ["Ethereum"],
+    domains: ["NFT"],
     venue_type: "virtual",
     start_date_time: new Date("2025-05-31T10:00:00+02:00"),
     end_date_time: new Date("2025-06-02T18:00:00+02:00"),
@@ -73,6 +74,7 @@ const defaultFilters: IFilterState = {
   month: DEFAULT_FILTERS.month,
   city: "",
   categories: [DEFAULT_FILTERS.category],
+  domains: [DEFAULT_FILTERS.domain],
   isUpcomingOrOngoing: false,
   venueType: DEFAULT_FILTERS.venueType,
 }
@@ -143,6 +145,25 @@ describe("CategoryFilter", () => {
   it("filters by category", () => {
     const filter = new CategoryFilter()
     filters.categories = ["Hackathon", "Conference"]
+    const result = filter.apply(baseEvents, filters)
+    expect(result.length).toBe(2)
+    expect(result[0].name).toBe("ETHDenver")
+    expect(result[1].name).toBe("ETHTokyo")
+  })
+})
+
+describe("DomainFilter", () => {
+  let filters: IFilterState
+  beforeEach(() => {
+    filters = defaultFilters
+  })
+  it("returns all events if domains is empty", () => {
+    const filter = new DomainFilter()
+    expect(filter.apply(baseEvents, filters)).toEqual(baseEvents)
+  })
+  it("filters by domain", () => {
+    const filter = new DomainFilter()
+    filters.domains = ["Ethereum"]
     const result = filter.apply(baseEvents, filters)
     expect(result.length).toBe(2)
     expect(result[0].name).toBe("ETHDenver")
@@ -249,6 +270,7 @@ describe("applyAllFilters", () => {
       isUpcomingOrOngoing: false,
       venueType: "in_person",
       categories: [DEFAULT_FILTERS.category],
+      domains: [DEFAULT_FILTERS.domain],
     }
   })
   it("applies all filters in sequence", () => {

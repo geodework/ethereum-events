@@ -17,6 +17,7 @@ export const useFilterStore = create<FilterStore>((set, get) => ({
     month: DEFAULT_FILTERS.month,
     city: "",
     categories: [DEFAULT_FILTERS.category],
+    domains: [DEFAULT_FILTERS.domain],
     venueType: DEFAULT_FILTERS.venueType,
     isUpcomingOrOngoing: false,
   },

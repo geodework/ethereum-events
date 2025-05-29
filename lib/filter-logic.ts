@@ -72,6 +72,22 @@ export class CategoryFilter implements EventFilter {
   }
 }
 
+export class DomainFilter implements EventFilter {
+  apply(
+    events: TEventWithRelations[],
+    filters: IFilterState
+  ): TEventWithRelations[] {
+    if (
+      filters.domains.length === 1 &&
+      filters.domains[0] === DEFAULT_FILTERS.domain
+    )
+      return events
+    return events.filter((event) =>
+      filters.domains.some((domain) => event.domains.includes(domain))
+    )
+  }
+}
+
 export class UpcomingOrOngoingFilter implements EventFilter {
   apply(
     events: TEventWithRelations[],
