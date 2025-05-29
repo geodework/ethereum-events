@@ -5,5 +5,5 @@ export const getCategories = async () => {
   if (error) {
     throw error
   }
-  return data.map((category) => category.name)
+  return data.map((event_categories) => event_categories.name)
 }
