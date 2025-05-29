@@ -1,7 +1,7 @@
 "use client"
 import { EventCard } from "./event-card"
 import type { Event } from "@/lib/data"
-import { MONTHS } from "@/lib/const"
+import { MONTHS } from "@/lib/filter"
 import { useFilterStore } from "@/hooks/eventFilter"
 
 export function ListView() {

@@ -1,4 +1,4 @@
-import { DEFAULT_FILTERS } from "@/lib/const"
+import { DEFAULT_FILTERS } from "@/lib/filter"
 import { IFilterState } from "@/lib/filter"
 import { events } from "@/lib/data"
 import type { TEventWithRelations } from "@/entities"

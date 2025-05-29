@@ -23,7 +23,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Switch } from "@/components/ui/switch"
 import { regions } from "@/lib/data"
-import { DEFAULT_FILTERS, MONTHS } from "@/lib/const"
+import { DEFAULT_FILTERS, MONTHS } from "@/lib/filter"
 import { useFilterStore } from "@/hooks/eventFilter"
 
 export function FilterBar() {

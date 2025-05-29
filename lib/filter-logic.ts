@@ -1,6 +1,5 @@
 import { TEventWithRelations } from "@/entities"
-import { IFilterState } from "./filter"
-import { DEFAULT_FILTERS } from "./const"
+import { IFilterState, DEFAULT_FILTERS } from "@/lib/filter"
 
 export interface EventFilter {
   apply(

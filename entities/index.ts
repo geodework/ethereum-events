@@ -1,5 +1,5 @@
 import { IWeatherAverage } from "@/api/weather/types"
-import { DEFAULT_FILTERS } from "@/lib/const"
+import { DEFAULT_FILTERS } from "@/lib/filter"
 
 export type TVenueType =
   | "in_person"

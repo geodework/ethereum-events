@@ -1,14 +1,14 @@
 // api/weather/__tests__/client.test.ts
 import { describe, it, expect } from "vitest"
 import { WeatherClient } from "./client"
-import type { WeatherData } from "./types"
+import type { IWeatherData } from "./types"
 
 describe("WeatherClient", () => {
   describe("calculateWeatherAverage", () => {
     it("should calculate correct averages for multiple days", () => {
       const weatherClient = WeatherClient.getInstance()
 
-      const mockWeatherData: WeatherData = {
+      const mockWeatherData: IWeatherData = {
         days: [
           {
             tempmax: 25.5,
@@ -44,7 +44,7 @@ describe("WeatherClient", () => {
     it("should handle single day data", () => {
       const weatherClient = WeatherClient.getInstance()
 
-      const mockWeatherData: WeatherData = {
+      const mockWeatherData: IWeatherData = {
         days: [
           {
             tempmax: 26.5,
@@ -68,7 +68,7 @@ describe("WeatherClient", () => {
     it("should round to 2 decimal places", () => {
       const weatherClient = WeatherClient.getInstance()
 
-      const mockWeatherData: WeatherData = {
+      const mockWeatherData: IWeatherData = {
         days: [
           {
             tempmax: 25.3,
@@ -97,7 +97,7 @@ describe("WeatherClient", () => {
     it("should handle empty days array", () => {
       const weatherClient = WeatherClient.getInstance()
 
-      const mockWeatherData: WeatherData = {
+      const mockWeatherData: IWeatherData = {
         days: [],
       }
 

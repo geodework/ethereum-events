@@ -11,8 +11,7 @@ import {
   CategoryFilter,
   DomainFilter,
 } from "./filter-logic"
-import { DEFAULT_FILTERS } from "./const"
-import type { IFilterState } from "./filter"
+import { DEFAULT_FILTERS, type IFilterState } from "@/lib/filter"
 import { TEventWithRelations } from "@/entities"
 
 const baseEvents: TEventWithRelations[] = [

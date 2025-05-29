@@ -4,7 +4,7 @@ import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { EventCard } from "./event-card"
-import { MONTHS } from "@/lib/const"
+import { MONTHS } from "@/lib/filter"
 import { useFilterStore } from "@/hooks/eventFilter"
 
 export function CalendarView() {

@@ -1,5 +1,5 @@
 import { TEventWithRelations } from "@/entities"
-import { DEFAULT_FILTERS } from "./const"
+import { DEFAULT_FILTERS } from "@/lib/filter"
 
 // Sample data for the events
 export const events: TEventWithRelations[] = [

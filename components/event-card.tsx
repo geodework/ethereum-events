@@ -2,10 +2,10 @@ import { Calendar, Flag, Globe, MapPin, Thermometer } from "lucide-react"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import type { Event } from "@/lib/data"
+import type { TEventWithRelations } from "@/entities"
 
 interface EventCardProps {
-  event: Event
+  event: TEventWithRelations
 }
 
 export function EventCard({ event }: EventCardProps) {
