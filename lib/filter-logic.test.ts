@@ -172,17 +172,21 @@ describe("DomainFilter", () => {
 
 describe("UpcomingOrOngoingFilter", () => {
   let filters: IFilterState
+
   beforeEach(() => {
     filters = defaultFilters
   })
+
   afterEach(() => {
     vi.useRealTimers()
   })
+
   it("returns all events if isUpcomingOrOngoing is false", () => {
     filters.isUpcomingOrOngoing = false
     const filter = new UpcomingOrOngoingFilter()
     expect(filter.apply(baseEvents, filters)).toEqual(baseEvents)
   })
+
   it("filters by upcoming or ongoing", () => {
     vi.setSystemTime(new Date("2025-04-15T00:00:00Z"))
     const filter = new UpcomingOrOngoingFilter()
@@ -202,7 +206,7 @@ describe("UpcomingOrOngoingFilter", () => {
       [
         {
           ...baseEvents[0],
-          end_date_time: currentTime,
+          endDateTime: currentTime,
         },
       ],
       filters
@@ -219,7 +223,7 @@ describe("UpcomingOrOngoingFilter", () => {
       [
         {
           ...baseEvents[0],
-          end_date_time: new Date("2025-04-01T00:00:00Z"),
+          endDateTime: new Date("2025-04-01T00:00:00Z"),
         },
       ],
       filters

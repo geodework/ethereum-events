@@ -104,9 +104,9 @@ export function FilterBar() {
           <div className="flex items-center space-x-2">
             <Switch
               id="deadline-soon"
-              checked={filters.deadlineSoon}
+              checked={filters.isUpcomingOrOngoing}
               onCheckedChange={(checked) =>
-                handleChange("deadlineSoon", checked)
+                handleChange("isUpcomingOrOngoing", checked)
               }
               className="data-[state=checked]:bg-accent"
             />
@@ -114,7 +114,7 @@ export function FilterBar() {
               htmlFor="deadline-soon"
               className="text-sm text-secondary-700"
             >
-              Only Upcomng Events
+              Only Ongoing/Upcoming
             </Label>
           </div>
         </div>

@@ -94,7 +94,7 @@ export class UpcomingOrOngoingFilter implements EventFilter {
   ): TEventWithRelations[] {
     if (!filters.isUpcomingOrOngoing) return events
     const now = new Date()
-    return events.filter((event) => new Date(event.endDateTime) >= now)
+    return events.filter((event) => event.endDateTime >= now)
   }
 }
 
