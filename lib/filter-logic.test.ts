@@ -23,8 +23,8 @@ const baseEvents: TEventWithRelations[] = [
     categories: ["Hackathon", "Conference"],
     domains: ["Ethereum", "Web3"],
     venue_type: "in_person",
-    start_date_time: "2025-02-23T09:00:00-07:00",
-    end_date_time: "2025-03-03T18:00:00-07:00",
+    start_date_time: new Date("2025-02-23T09:00:00-07:00"),
+    end_date_time: new Date("2025-03-03T18:00:00-07:00"),
     links: ["https://ethdenver.com"],
     socials: ["https://twitter.com/ETHDenver"],
     communities: ["https://t.me/ethdenver"],
@@ -40,8 +40,8 @@ const baseEvents: TEventWithRelations[] = [
     categories: ["Hackathon"],
     domains: ["Ethereum"],
     venue_type: "virtual",
-    start_date_time: "2025-05-31T10:00:00+02:00",
-    end_date_time: "2025-06-02T18:00:00+02:00",
+    start_date_time: new Date("2025-05-31T10:00:00+02:00"),
+    end_date_time: new Date("2025-06-02T18:00:00+02:00"),
     links: ["https://ethprague.com"],
     socials: ["https://twitter.com/ETHPrague"],
     communities: ["https://t.me/ethprague"],
@@ -57,8 +57,8 @@ const baseEvents: TEventWithRelations[] = [
     categories: ["Hackathon"],
     domains: ["Ethereum"],
     venue_type: "in_person",
-    start_date_time: "2025-04-12T09:00:00+09:00",
-    end_date_time: "2025-04-14T18:00:00+09:00",
+    start_date_time: new Date("2025-04-12T09:00:00+09:00"),
+    end_date_time: new Date("2025-04-14T18:00:00+09:00"),
     links: ["https://ethtokyo.com"],
     socials: ["https://twitter.com/ETHTokyo"],
     communities: ["https://t.me/ethtokyo"],
@@ -161,7 +161,7 @@ describe("UpcomingOrOngoingFilter", () => {
       [
         {
           ...baseEvents[0],
-          end_date_time: currentTime.toISOString(),
+          end_date_time: currentTime,
         },
       ],
       filters
@@ -178,7 +178,7 @@ describe("UpcomingOrOngoingFilter", () => {
       [
         {
           ...baseEvents[0],
-          end_date_time: new Date("2025-04-01T00:00:00Z").toISOString(),
+          end_date_time: new Date("2025-04-01T00:00:00Z"),
         },
       ],
       filters

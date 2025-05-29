@@ -29,8 +29,8 @@ export class MonthFilter implements EventFilter {
     // Year is not important, we just need to get the month index.
     const monthIndex = new Date(`${filters.month} 1, 9999`).getMonth()
     return events.filter((event) => {
-      const eventStartMonth = new Date(event.start_date_time).getMonth()
-      const eventEndMonth = new Date(event.end_date_time).getMonth()
+      const eventStartMonth = event.start_date_time.getMonth()
+      const eventEndMonth = event.end_date_time.getMonth()
       return (
         eventStartMonth === monthIndex ||
         eventEndMonth === monthIndex ||
