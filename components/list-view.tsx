@@ -1,25 +1,23 @@
 "use client"
 import { EventCard } from "./event-card"
-import type { Event } from "@/lib/data"
-import { months } from "@/lib/data"
+import type { TEventWithRelations } from "@/entities"
+import { MONTHS } from "@/lib/filter"
+import { useFilterStore } from "@/hooks/eventFilter"
 
-interface ListViewProps {
-  events: Event[]
-}
-
-export function ListView({ events }: ListViewProps) {
+export function ListView() {
+  const { filteredEvents: events } = useFilterStore()
   // Group events by month
-  const eventsByMonth: Record<string, Event[]> = {}
+  const eventsByMonth: Record<string, TEventWithRelations[]> = {}
 
   // Sort events by start date
   const sortedEvents = [...events].sort(
-    (a, b) => a.startDate.getTime() - b.startDate.getTime()
+    (a, b) => a.startDateTime.getTime() - b.endDateTime.getTime()
   )
 
   // Group events by month
   sortedEvents.forEach((event) => {
-    const month = event.startDate.getMonth()
-    const monthName = months[month]
+    const month = event.startDateTime.getMonth()
+    const monthName = MONTHS[month]
 
     if (!eventsByMonth[monthName]) {
       eventsByMonth[monthName] = []
@@ -34,7 +32,7 @@ export function ListView({ events }: ListViewProps) {
         Events Calendar {new Date().getFullYear()}
       </h2>
 
-      {months.map((month) => {
+      {MONTHS.map((month) => {
         const monthEvents = eventsByMonth[month] || []
 
         if (monthEvents.length === 0) {

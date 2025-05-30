@@ -4,14 +4,11 @@ import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { EventCard } from "./event-card"
-import type { Event } from "@/lib/data"
-import { months } from "@/lib/data"
+import { MONTHS } from "@/lib/filter"
+import { useFilterStore } from "@/hooks/eventFilter"
 
-interface CalendarViewProps {
-  events: Event[]
-}
-
-export function CalendarView({ events }: CalendarViewProps) {
+export function CalendarView() {
+  const { filteredEvents: events } = useFilterStore()
   const [currentDate, setCurrentDate] = useState(new Date())
   const currentMonth = currentDate.getMonth()
   const currentYear = currentDate.getFullYear()
@@ -29,10 +26,10 @@ export function CalendarView({ events }: CalendarViewProps) {
 
   // Filter events for the current month
   const filteredEvents = events.filter((event) => {
-    const eventStartMonth = event.startDate.getMonth()
-    const eventStartYear = event.startDate.getFullYear()
-    const eventEndMonth = event.endDate.getMonth()
-    const eventEndYear = event.endDate.getFullYear()
+    const eventStartMonth = event.startDateTime.getMonth()
+    const eventStartYear = event.startDateTime.getFullYear()
+    const eventEndMonth = event.endDateTime.getMonth()
+    const eventEndYear = event.endDateTime.getFullYear()
 
     // Include events that start, end, or span the current month
     return (
@@ -59,8 +56,8 @@ export function CalendarView({ events }: CalendarViewProps) {
 
     // Check if there are events on this day
     const dayEvents = events.filter((event) => {
-      const eventStart = new Date(event.startDate)
-      const eventEnd = new Date(event.endDate)
+      const eventStart = new Date(event.startDateTime)
+      const eventEnd = new Date(event.endDateTime)
 
       // Reset time part for comparison
       eventStart.setHours(0, 0, 0, 0)
@@ -81,7 +78,7 @@ export function CalendarView({ events }: CalendarViewProps) {
     <div className="container py-6">
       <div className="mb-6 flex items-center justify-between">
         <h2 className="text-2xl font-bold text-primary">
-          {months[currentMonth]} {currentYear}
+          {MONTHS[currentMonth]} {currentYear}
         </h2>
         <div className="flex items-center gap-2">
           <Button
@@ -154,7 +151,7 @@ export function CalendarView({ events }: CalendarViewProps) {
       </div>
 
       <h3 className="mb-4 text-xl font-semibold text-secondary-900">
-        Events in {months[currentMonth]}
+        Events in {MONTHS[currentMonth]}
       </h3>
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -163,7 +160,7 @@ export function CalendarView({ events }: CalendarViewProps) {
         ))}
         {filteredEvents.length === 0 && (
           <div className="col-span-full rounded-lg border border-secondary-200 bg-secondary-50 py-12 text-center text-secondary-500">
-            No events found for {months[currentMonth]}
+            No events found for {MONTHS[currentMonth]}
           </div>
         )}
       </div>

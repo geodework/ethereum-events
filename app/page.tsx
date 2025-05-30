@@ -1,61 +1,12 @@
 "use client"
-
-import { useState } from "react"
+import Link from "next/link"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CalendarView } from "@/components/calendar-view"
 import { ListView } from "@/components/list-view"
-import { FilterBar, type FilterState } from "@/components/filter-bar"
-import { events } from "@/lib/data"
-import { Calendar, List, Globe } from "lucide-react"
+import { FilterBar } from "@/components/filter-bar"
+import { Calendar, List } from "lucide-react"
 
 export default function Home() {
-  const [filteredEvents, setFilteredEvents] = useState(events)
-
-  const handleFilterChange = (filters: FilterState) => {
-    let filtered = [...events]
-
-    // Filter by region
-    if (filters.region !== "All Regions") {
-      filtered = filtered.filter((event) => event.region === filters.region)
-    }
-
-    // Filter by month
-    if (filters.month !== "All Months") {
-      const monthIndex = new Date(`${filters.month} 1, 2024`).getMonth()
-      filtered = filtered.filter((event) => {
-        const eventStartMonth = event.startDate.getMonth()
-        const eventEndMonth = event.endDate.getMonth()
-        return (
-          eventStartMonth === monthIndex ||
-          eventEndMonth === monthIndex ||
-          (eventStartMonth < monthIndex && eventEndMonth > monthIndex)
-        )
-      })
-    }
-
-    // Filter by city
-    if (filters.city) {
-      const cityLower = filters.city.toLowerCase()
-      filtered = filtered.filter(
-        (event) =>
-          event.city.toLowerCase().includes(cityLower) ||
-          event.country.toLowerCase().includes(cityLower)
-      )
-    }
-
-    // Filter by deadline soon
-    if (filters.deadlineSoon) {
-      const now = new Date()
-      filtered = filtered.filter((event) => {
-        const timeDiff = event.ticketDeadline.getTime() - now.getTime()
-        const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24))
-        return daysDiff <= 14 && daysDiff > 0
-      })
-    }
-
-    setFilteredEvents(filtered)
-  }
-
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary-50">
       <div className="container py-8">
@@ -66,7 +17,7 @@ export default function Home() {
         </div>
       </div>
 
-      <FilterBar onFilterChange={handleFilterChange} />
+      <FilterBar />
 
       <Tabs defaultValue="list" className="w-full">
         <div className="container py-4">
@@ -82,13 +33,15 @@ export default function Home() {
             </TabsTrigger>
           </TabsList>
         </div>
-
+        <Link href="/temp" className="text-xl font-bold text-white">
+          DDD
+        </Link>
         <TabsContent value="calendar" className="mt-0 bg-white">
-          <CalendarView events={filteredEvents} />
+          <CalendarView />
         </TabsContent>
 
         <TabsContent value="list" className="mt-0 bg-white">
-          <ListView events={filteredEvents} />
+          <ListView />
         </TabsContent>
       </Tabs>
     </div>

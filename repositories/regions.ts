@@ -5,5 +5,5 @@ export const getRegions = async () => {
   if (error) {
     throw error
   }
-  return data
+  return data.map((continents) => continents.name)
 }

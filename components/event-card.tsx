@@ -2,20 +2,13 @@ import { Calendar, Flag, Globe, MapPin, Thermometer } from "lucide-react"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import type { Event } from "@/lib/data"
+import type { TEventWithRelations } from "@/entities"
 
 interface EventCardProps {
-  event: Event
+  event: TEventWithRelations
 }
 
 export function EventCard({ event }: EventCardProps) {
-  const isDeadlineSoon = () => {
-    const now = new Date()
-    const timeDiff = event.ticketDeadline.getTime() - now.getTime()
-    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24))
-    return daysDiff <= 14 && daysDiff > 0
-  }
-
   const formatDateRange = (start: Date, end: Date) => {
     const startMonth = start.toLocaleString("default", { month: "short" })
     const endMonth = end.toLocaleString("default", { month: "short" })
@@ -43,7 +36,7 @@ export function EventCard({ event }: EventCardProps) {
             <h3 className="text-xl font-bold text-primary group-hover:text-primary-light-600">
               {event.name}
             </h3>
-            <p className="text-sm text-secondary-500">{event.description}</p>
+            {/* <p className="text-sm text-secondary-500">{event.description}</p> */}
           </div>
           <Badge
             variant="outline"
@@ -56,31 +49,18 @@ export function EventCard({ event }: EventCardProps) {
       <CardContent className="space-y-3 p-4 pb-2">
         <div className="flex items-center gap-2 text-sm">
           <MapPin className="h-4 w-4 text-primary-light-500" />
-          <span className="text-secondary-700">
-            {event.city}, {event.country}
-          </span>
+          <span className="text-secondary-700">{event.location}</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Calendar className="h-4 w-4 text-primary-light-500" />
           <span className="text-secondary-700">
-            {formatDateRange(event.startDate, event.endDate)}
-          </span>
-        </div>
-        <div className="flex items-center gap-2 text-sm">
-          <Flag className="h-4 w-4 text-primary-light-500" />
-          <span className="text-secondary-700">
-            Ticket Deadline: {formatDeadline(event.ticketDeadline)}
-            {isDeadlineSoon() && (
-              <Badge variant="destructive" className="ml-2 text-xs">
-                Soon
-              </Badge>
-            )}
+            {formatDateRange(event.startDateTime, event.endDateTime)}
           </span>
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Thermometer className="h-4 w-4 text-primary-light-500" />
           <span className="text-secondary-700">
-            Avg. Temp: {event.temperature}
+            Avg. Temp: {event.weatherMetrics.temp}°C
           </span>
         </div>
       </CardContent>
