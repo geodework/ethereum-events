@@ -32,3 +32,11 @@ export const MONTHS = [
   "November",
   "December",
 ]
+
+export const VENUE_TYPE_NAMES: {
+  [key in TVenueType]: string
+} = {
+  in_person: "Onsite",
+  virtual: "Online",
+  hybrid: "Hybrid",
+}
