@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest"
-import { normalizeEventData } from "./normalizeEventData"
+import { normalizeEventData } from "./eventDataTransformers"
 
 const mockEvents = [
   {

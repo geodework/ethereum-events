@@ -16,8 +16,8 @@ export type TEventWithRelations = {
   categories: string[]
   domains: string[]
   venueType: TVenueType
-  startDateTime: Date | null
-  endDateTime: Date | null
+  startDateTime: Date
+  endDateTime: Date
   links: string[]
   socials: string[]
   communities: string[]

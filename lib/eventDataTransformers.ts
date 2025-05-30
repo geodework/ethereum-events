@@ -1,8 +1,11 @@
 import { IWeatherAverage } from "@/api/weather/types"
-import { TEventDTO } from "./types"
+import { TEventOnServiceDTO } from "./types"
 import { TEventWithRelations, TVenueType } from "@/entities"
+import { TEventWithRelationsDTO } from "@/repositories/events"
 
-export function normalizeEventData(events: TEventDTO[]): TEventWithRelations[] {
+export function normalizeEventData(
+  events: TEventOnServiceDTO[]
+): TEventWithRelations[] {
   return events.map((event) => {
     return {
       id: event.id,
@@ -10,10 +13,8 @@ export function normalizeEventData(events: TEventDTO[]): TEventWithRelations[] {
       location: event?.location || "",
       region: event.countries?.continents?.name || "",
       country: event.countries?.name || "",
-      startDateTime: event.start_date_time
-        ? new Date(event.start_date_time)
-        : null,
-      endDateTime: event.end_date_time ? new Date(event.end_date_time) : null,
+      startDateTime: new Date(event.start_date_time),
+      endDateTime: new Date(event.end_date_time),
       venueType: event.venue_type as TVenueType,
       hasTimezone: event.has_timezone,
       weatherMetrics: event.weather_metrics as unknown as IWeatherAverage,
@@ -27,4 +28,19 @@ export function normalizeEventData(events: TEventDTO[]): TEventWithRelations[] {
       domains: event.domains.map((domain) => domain.event_domains.name),
     }
   })
+}
+
+function hasDateTimes(
+  event: TEventWithRelationsDTO
+): event is TEventOnServiceDTO {
+  return Boolean(event.start_date_time && event.end_date_time)
+}
+
+/**
+ * Convert types defiend for database concern to be for service layer TEventOnServiceDTO.
+ */
+export function filterEventsDTO(
+  events: TEventWithRelationsDTO[]
+): TEventOnServiceDTO[] {
+  return events.filter(hasDateTimes)
 }
