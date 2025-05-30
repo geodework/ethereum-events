@@ -1,4 +1,13 @@
 import { TVenueType } from "@/entities"
+import {
+  Mic2,
+  Terminal,
+  Users,
+  Flag,
+  MapPin,
+  Wrench,
+  Layers,
+} from "lucide-react"
 
 export interface IFilterState {
   region: string
@@ -40,3 +49,18 @@ export const VENUE_TYPE_NAMES: {
   virtual: "Online",
   hybrid: "Hybrid",
 }
+
+export const CATEGORY_META: Record<
+  string,
+  { icon: React.ElementType; color: string }
+> = {
+  Conference: { icon: Mic2, color: "bg-cyan-100" }, // 🎤 keynote talks
+  Hackathon: { icon: Terminal, color: "bg-pink-100" }, // 💻 code & CLI
+  Meetup: { icon: Users, color: "bg-green-100" }, // 👥 community gathering
+  Summit: { icon: Flag, color: "bg-yellow-100" }, // 🏁 top-level gathering
+  "Popup Village/City": { icon: MapPin, color: "bg-purple-100" }, // 📍 pop-up location
+  Workshop: { icon: Wrench, color: "bg-orange-100" }, // 🛠 hands-on session
+  "Blockchain Week": { icon: Layers, color: "bg-blue-100" }, // 📚 stacked blocks
+}
+
+export type TCategory = keyof typeof CATEGORY_META
