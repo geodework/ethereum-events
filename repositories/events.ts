@@ -20,3 +20,7 @@ export const getEventsWithRelations = async () => {
   }
   return data
 }
+
+export type TEventWithRelationsDTO = Awaited<
+  ReturnType<typeof getEventsWithRelations>
+>[0]

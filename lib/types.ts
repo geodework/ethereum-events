@@ -1,14 +1,14 @@
-import { Database } from "@/supabase/database.types"
+import { TEventWithRelationsDTO } from "@/repositories/events"
 
-export type TEventDTO = Database["public"]["Tables"]["events"]["Row"] & {
+export type TEventOnServiceDTO = TEventWithRelationsDTO & {
+  start_date_time: string
+  end_date_time: string
   countries: {
     name: string
-    continents: {
-      name: string
-    }
-    country_code: string
     official_name: string
-  }
+    country_code: string
+    continents: { name: string } | null
+  } | null
   categories: {
     event_categories: {
       name: string
