@@ -104,6 +104,7 @@ export function FilterBar() {
           </div>
           <div className="flex items-center space-x-2">
             <ToggleBar
+              id="ongoing-upcoming"
               isChecked={filters.isUpcomingOrOngoing}
               onCheckedChange={(checked) =>
                 handleChange("isUpcomingOrOngoing", checked)

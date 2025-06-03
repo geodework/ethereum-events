@@ -37,6 +37,7 @@ export default function Home() {
           </TabsList>
           <div className="flex items-center space-x-2">
             <ToggleBar
+              id="temperature"
               isChecked={isCelsius}
               onCheckedChange={(checked) => setIsCelsius(checked)}
               label={`Showing ${isCelsius ? "°C" : "°F"}`}
