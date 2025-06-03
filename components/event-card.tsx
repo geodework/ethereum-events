@@ -10,6 +10,7 @@ import { EventTypeBadge, badgeVariants } from "./event-type-badge"
 import { IconChip } from "./icon-chip"
 import { formatTemperature } from "@/lib/utils"
 import { useCardState } from "@/hooks/cardState"
+import { SocialLinkIcon } from "./social-link-icon"
 
 export function getVenueTypeBadgeVariant(
   venueType: TVenueType
@@ -98,24 +99,26 @@ export function EventCard({ event }: EventCardProps) {
           })}
         </div>
       </CardContent>
-      <CardFooter className="flex gap-2 border-t border-secondary-100 bg-secondary-50 p-3">
-        <Button
-          variant="outline"
-          size="sm"
-          className="flex-1 border-secondary-200 bg-white text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
-        >
-          <Calendar className="mr-1 h-3 w-3" /> Add to Calendar
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          className="border-secondary-200 bg-white text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
-          onClick={() => {
-            window.open(event.links[0], "_blank")
-          }}
-        >
-          <Globe className="h-3 w-3" />
-        </Button>
+      <CardFooter className="flex gap-2 border-t border-secondary-100 bg-secondary-50 p-3 justify-end">
+        {[...event.socials, ...event.links, ...event.communities].map(
+          (link) => {
+            if (!link || link.length === 0) return null
+
+            return (
+              <Button
+                key={link}
+                variant="outline"
+                size="sm"
+                className="border-secondary-200 bg-white text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
+                onClick={() => {
+                  window.open(link, "_blank")
+                }}
+              >
+                <SocialLinkIcon link={link} />
+              </Button>
+            )
+          }
+        )}
       </CardFooter>
     </Card>
   )
