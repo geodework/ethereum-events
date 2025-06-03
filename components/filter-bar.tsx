@@ -21,11 +21,11 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
 import { categories, domains, regions } from "@/lib/data"
 import { DEFAULT_FILTERS, MONTHS } from "@/lib/filter"
 import { useFilterStore } from "@/hooks/eventFilter"
 import { useState } from "react"
+import { ToggleBar } from "./toggle-bar"
 
 export function FilterBar() {
   const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -102,22 +102,14 @@ export function FilterBar() {
               onChange={(e) => handleChange("city", e.target.value)}
             />
           </div>
-
           <div className="flex items-center space-x-2">
-            <Switch
-              id="deadline-soon"
-              checked={filters.isUpcomingOrOngoing}
+            <ToggleBar
+              isChecked={filters.isUpcomingOrOngoing}
               onCheckedChange={(checked) =>
                 handleChange("isUpcomingOrOngoing", checked)
               }
-              className="data-[state=checked]:bg-accent"
+              label="Only Ongoing/Upcoming"
             />
-            <Label
-              htmlFor="deadline-soon"
-              className="text-sm text-secondary-700"
-            >
-              Only Ongoing/Upcoming
-            </Label>
           </div>
         </div>
 
