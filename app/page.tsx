@@ -2,7 +2,7 @@
 import Link from "next/link"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { CalendarView } from "@/components/calendar-view"
-import { ListView } from "@/components/list-view"
+import { CardView } from "@/components/card-view"
 import { FilterBar } from "@/components/filter-bar"
 import { Calendar, List } from "lucide-react"
 import { ToggleBar } from "@/components/toggle-bar"
@@ -32,7 +32,7 @@ export default function Home() {
               <Calendar className="mr-2 h-4 w-4" /> Calendar View
             </TabsTrigger>
             <TabsTrigger value="list" className="data-[state=active]:bg-accent">
-              <List className="mr-2 h-4 w-4" /> List View
+              <List className="mr-2 h-4 w-4" /> Card View
             </TabsTrigger>
           </TabsList>
           <div className="flex items-center space-x-2">
@@ -50,7 +50,7 @@ export default function Home() {
         </TabsContent>
 
         <TabsContent value="list" className="mt-0 bg-white">
-          <ListView />
+          <CardView />
         </TabsContent>
       </Tabs>
     </div>
