@@ -5,8 +5,11 @@ import { CalendarView } from "@/components/calendar-view"
 import { ListView } from "@/components/list-view"
 import { FilterBar } from "@/components/filter-bar"
 import { Calendar, List } from "lucide-react"
+import { ToggleBar } from "@/components/toggle-bar"
+import { useCardState } from "@/hooks/cardState"
 
 export default function Home() {
+  const { isCelsius, setIsCelsius } = useCardState()
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary-50">
       <div className="container py-8">
@@ -20,7 +23,7 @@ export default function Home() {
       <FilterBar />
 
       <Tabs defaultValue="list" className="w-full">
-        <div className="container py-4">
+        <div className="container py-4 flex flex-row justify-between">
           <TabsList className="grid w-full max-w-md grid-cols-2 border bg-white">
             <TabsTrigger
               value="calendar"
@@ -32,10 +35,15 @@ export default function Home() {
               <List className="mr-2 h-4 w-4" /> List View
             </TabsTrigger>
           </TabsList>
+          <div className="flex items-center space-x-2">
+            <ToggleBar
+              isChecked={isCelsius}
+              onCheckedChange={(checked) => setIsCelsius(checked)}
+              label={`Showing ${isCelsius ? "°C" : "°F"}`}
+            />
+          </div>
         </div>
-        <Link href="/temp" className="text-xl font-bold text-white">
-          DDD
-        </Link>
+
         <TabsContent value="calendar" className="mt-0 bg-white">
           <CalendarView />
         </TabsContent>

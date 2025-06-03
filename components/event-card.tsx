@@ -8,6 +8,8 @@ import { TVenueType } from "@/entities"
 import { type VariantProps } from "class-variance-authority"
 import { EventTypeBadge, badgeVariants } from "./event-type-badge"
 import { IconChip } from "./icon-chip"
+import { formatTemperature } from "@/lib/utils"
+import { useCardState } from "@/hooks/cardState"
 
 export function getVenueTypeBadgeVariant(
   venueType: TVenueType
@@ -29,6 +31,8 @@ interface EventCardProps {
 }
 
 export function EventCard({ event }: EventCardProps) {
+  const { isCelsius } = useCardState()
+
   const formatDateRange = (start: Date, end: Date) => {
     const startMonth = start.toLocaleString("default", { month: "short" })
     const endMonth = end.toLocaleString("default", { month: "short" })
@@ -77,7 +81,7 @@ export function EventCard({ event }: EventCardProps) {
         <div className="flex items-center gap-2 text-sm">
           <Thermometer className="h-4 w-4 text-primary-light-500" />
           <span className="text-secondary-700">
-            Avg. Temp: {event?.weatherMetrics?.temp}°C
+            Temp: {formatTemperature(event?.weatherMetrics, isCelsius)}
           </span>
         </div>
         <div className="flex flex-wrap gap-1 mb-2">
