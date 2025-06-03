@@ -10,6 +10,9 @@ import { useFilterStore } from "@/hooks/eventFilter"
 export function CalendarView() {
   const { filteredEvents: events } = useFilterStore()
   const [currentDate, setCurrentDate] = useState(new Date())
+  const [highlightedEventId, setHighlightedEventId] = useState<number | null>(
+    null
+  )
   const currentMonth = currentDate.getMonth()
   const currentYear = currentDate.getFullYear()
 
@@ -73,6 +76,26 @@ export function CalendarView() {
       events: dayEvents,
     })
   }
+  console.log(calendarDays)
+
+  // Function to generate a solid background class based on event.id
+  function getEventBgClass(eventId: string) {
+    const colors = [
+      "bg-blue-200",
+      "bg-green-200",
+      "bg-yellow-100",
+      "bg-pink-200",
+      "bg-purple-200",
+      "bg-orange-200",
+      "bg-teal-200",
+      "bg-red-100",
+    ]
+    let hash = 0
+    for (let i = 0; i < eventId.length; i++) {
+      hash += eventId.charCodeAt(i)
+    }
+    return colors[hash % colors.length]
+  }
 
   return (
     <div className="container py-6">
@@ -128,20 +151,32 @@ export function CalendarView() {
                 </div>
                 {day.events.length > 0 && (
                   <div className="mt-1">
-                    {day.events.slice(0, 2).map((event) => (
+                    {day.events.map((event) => (
                       <div
                         key={event.id}
-                        className="mb-1 truncate rounded bg-gradient-to-r from-blue-50 to-blue-100 px-1 py-0.5 text-xs text-primary"
+                        className={`mb-1 truncate rounded ${getEventBgClass(
+                          event.id.toString()
+                        )} px-1 py-0.5 text-xs text-primary hover:cursor-pointer`}
                         title={event.name}
+                        onClick={() => {
+                          const el = document.getElementById(
+                            `event-card-${event.id}`
+                          )
+                          if (el) {
+                            el.scrollIntoView({
+                              behavior: "smooth",
+                              block: "center",
+                            })
+                          }
+                          setHighlightedEventId(event.id)
+                          setTimeout(() => {
+                            setHighlightedEventId(null)
+                          }, 900)
+                        }}
                       >
                         {event.name}
                       </div>
                     ))}
-                    {day.events.length > 2 && (
-                      <div className="text-xs text-secondary-500">
-                        +{day.events.length - 2} more
-                      </div>
-                    )}
                   </div>
                 )}
               </>
@@ -156,7 +191,17 @@ export function CalendarView() {
 
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {filteredEvents.map((event) => (
-          <EventCard key={event.id} event={event} />
+          <div
+            id={`event-card-${event.id}`}
+            key={event.id}
+            className={
+              `transition-all duration-800 ` +
+              (highlightedEventId === event.id &&
+                "border-4 border-accent ring-2 ring-accent/50 ring-blur-sm")
+            }
+          >
+            <EventCard event={event} />
+          </div>
         ))}
         {filteredEvents.length === 0 && (
           <div className="col-span-full rounded-lg border border-secondary-200 bg-secondary-50 py-12 text-center text-secondary-500">
