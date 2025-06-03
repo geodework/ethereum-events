@@ -9,6 +9,16 @@ const config = {
     "./src/**/*.{ts,tsx}",
     "*.{js,ts,jsx,tsx,mdx}",
   ],
+  // Needed to avoid purge for those being used dynamically.
+  safelist: [
+    "bg-cyan-100",
+    "bg-pink-100",
+    "bg-green-100",
+    "bg-yellow-100",
+    "bg-purple-100",
+    "bg-orange-100",
+    "bg-blue-100",
+  ],
   prefix: "",
   theme: {
     container: {

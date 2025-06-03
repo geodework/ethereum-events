@@ -4,7 +4,7 @@ import type { TEventWithRelations } from "@/entities"
 import { MONTHS } from "@/lib/filter"
 import { useFilterStore } from "@/hooks/eventFilter"
 
-export function ListView() {
+export function CardView() {
   const { filteredEvents: events } = useFilterStore()
   // Group events by month
   const eventsByMonth: Record<string, TEventWithRelations[]> = {}
