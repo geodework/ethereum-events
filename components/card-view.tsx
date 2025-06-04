@@ -3,6 +3,8 @@ import { EventCard } from "./event-card"
 import type { TEventWithRelations } from "@/entities"
 import { MONTHS } from "@/lib/filter"
 import { useFilterStore } from "@/hooks/eventFilter"
+import { AdBanner } from "./ad-banner"
+import React from "react"
 
 export function CardView() {
   const { filteredEvents: events } = useFilterStore()
@@ -32,7 +34,7 @@ export function CardView() {
         Events Calendar {new Date().getFullYear()}
       </h2>
 
-      {MONTHS.map((month) => {
+      {MONTHS.map((month, idx) => {
         const monthEvents = eventsByMonth[month] || []
 
         if (monthEvents.length === 0) {
@@ -48,10 +50,14 @@ export function CardView() {
               </h3>
             </div>
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {monthEvents.map((event) => (
-                <EventCard key={event.id} event={event} />
+              {monthEvents.map((event, evIdx) => (
+                <React.Fragment key={event.id}>
+                  <EventCard key={event.id} event={event} />
+                  {evIdx === 5 && <AdBanner className="my-0 py-6 md:h-full" />}
+                </React.Fragment>
               ))}
             </div>
+            {idx === 0 && <AdBanner />}
           </div>
         )
       })}
