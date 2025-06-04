@@ -4,6 +4,7 @@ import { useState } from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { EventCard } from "./event-card"
+import { AdBanner } from "./ad-banner"
 import { MONTHS } from "@/lib/filter"
 import { useFilterStore } from "@/hooks/eventFilter"
 
@@ -184,7 +185,7 @@ export function CalendarView() {
           </div>
         ))}
       </div>
-
+      <AdBanner />
       <h3 className="mb-4 text-xl font-semibold text-secondary-900">
         Events in {MONTHS[currentMonth]}
       </h3>

@@ -1,12 +1,10 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Raleway } from "next/font/google"
 import "./globals.css"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
-
-// const raleway = Raleway({ subsets: ["latin"], weight: ["400", "700"] })
+import { AdBanner } from "@/components/ad-banner"
 
 export const metadata: Metadata = {
   title: "Ethereum Events - Global Crypto Calendar",
@@ -30,6 +28,7 @@ export default function RootLayout({
           <div className="flex min-h-screen flex-col">
             <Header />
             <main className="flex-1 bg-white">{children}</main>
+            <AdBanner className="mx-6" />
             <Footer />
           </div>
         </ThemeProvider>
