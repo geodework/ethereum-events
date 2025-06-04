@@ -22,7 +22,7 @@ export default function Home() {
 
       <FilterBar />
 
-      <Tabs defaultValue="calendar" className="w-full">
+      <Tabs defaultValue="list" className="w-full">
         <div className="container py-4 flex flex-row justify-between">
           <TabsList className="grid w-full max-w-md grid-cols-2 border bg-white">
             <TabsTrigger
