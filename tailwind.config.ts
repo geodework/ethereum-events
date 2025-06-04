@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss"
+import defaultTheme from "tailwindcss/defaultTheme"
 
 const config = {
   darkMode: ["class"],
@@ -80,6 +81,9 @@ const config = {
           DEFAULT: "hsl(var(--tealpop))",
           foreground: "hsl(var(--tealpop-foreground))",
         },
+      },
+      fontFamily: {
+        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
       },
       borderRadius: {
         lg: "var(--radius)",

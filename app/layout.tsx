@@ -6,7 +6,7 @@ import Header from "@/components/header"
 import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 
-const raleway = Raleway({ subsets: ["latin"], weight: ["400", "700"] })
+// const raleway = Raleway({ subsets: ["latin"], weight: ["400", "700"] })
 
 export const metadata: Metadata = {
   title: "Ethereum Events - Global Crypto Calendar",
@@ -20,10 +20,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${raleway.className} pop-fonts`}>
+      <body className="font-mono">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
