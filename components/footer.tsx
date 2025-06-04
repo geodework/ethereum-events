@@ -38,6 +38,11 @@ const links = [
   },
 ]
 
+const legal = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms", label: "Terms of Conditions" },
+]
+
 export default function Footer() {
   return (
     <footer className="border-t bg-primary">
@@ -77,16 +82,16 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-medium text-white">Legal</h3>
             <ul className="mt-2 space-y-2 text-sm">
-              <li>
-                <Link href="#" className="text-secondary-300 hover:text-white">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-secondary-300 hover:text-white">
-                  Terms of Service
-                </Link>
-              </li>
+              {legal.map((item) => (
+                <li key={item.label}>
+                  <Link
+                    href={item.href}
+                    className="text-secondary-300 hover:text-white"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <div>
