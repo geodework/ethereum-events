@@ -51,7 +51,7 @@ export function EventCard({ event }: EventCardProps) {
         </div>
         <div className="flex items-center gap-2 text-sm">
           <MapPin className="h-4 w-4 text-primary-light-500" />
-          <span className="text-secondary-700">{event.location} 🇺🇸</span>
+          <span className="text-secondary-700">{event.location}</span>
         </div>
         <div className="flex items-center gap-2 text-sm">
           <Calendar className="h-4 w-4 text-primary-light-500" />
