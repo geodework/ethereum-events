@@ -7,9 +7,30 @@ import { FilterBar } from "@/components/filter-bar"
 import { Calendar, List } from "lucide-react"
 import { ToggleBar } from "@/components/toggle-bar"
 import { useCardState } from "@/hooks/cardState"
+import { useEffect, useState } from "react"
 
 export default function Home() {
   const { isCelsius, setIsCelsius } = useCardState()
+  const [activeTab, setActiveTab] = useState("list")
+  const [isXs, setIsXs] = useState(false)
+
+  useEffect(() => {
+    // Media query for xs screens (sm: 640px) since Calendar View is not visually appealing on xs screens.
+    const mediaQuery = window.matchMedia("(max-width: 639px)")
+    const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+      setIsXs(e.matches)
+    }
+    handleChange(mediaQuery)
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [])
+
+  useEffect(() => {
+    if (isXs && activeTab === "calendar") {
+      setActiveTab("list")
+    }
+  }, [isXs, activeTab])
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-white to-secondary-50">
       <div className="container py-8">
@@ -22,12 +43,12 @@ export default function Home() {
 
       <FilterBar />
 
-      <Tabs defaultValue="list" className="w-full">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <div className="container py-4 flex flex-col sm:flex-row justify-between">
           <TabsList className="grid w-full max-w-md grid-cols-2 border bg-white">
             <TabsTrigger
               value="calendar"
-              className="data-[state=active]:bg-accent"
+              className="data-[state=active]:bg-accent pointer-events-none opacity-50 sm:pointer-events-auto sm:opacity-100"
             >
               <Calendar className="mr-2 h-4 w-4" /> Calendar View
             </TabsTrigger>
