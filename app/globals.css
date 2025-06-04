@@ -1,3 +1,4 @@
+@import "@fontsource/ibm-plex-mono";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -88,44 +89,15 @@
   }
 }
 
-.pop-fonts {
-  font-family: 'Raleway', sans-serif;
-}
-
-.pop-fonts h1, .pop-fonts h2, .pop-fonts h3, .pop-fonts h4, .pop-fonts h5, .pop-fonts h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-mono;
   font-weight: 700;
   letter-spacing: 0.01em;
-}
-
-.pop-fonts h1 {
-  font-size: 2.8rem;
-  line-height: 1.1;
-}
-.pop-fonts h2 {
-  font-size: 2.2rem;
-  line-height: 1.15;
-}
-.pop-fonts h3 {
-  font-size: 1.6rem;
-  line-height: 1.2;
-}
-
-.pop-fonts {
-  font-size: 1.08rem;
-}
-
-.pop-fonts p, .pop-fonts li, .pop-fonts span, .pop-fonts button {
-  font-size: 1.08rem;
-}
-
-.pop-fonts .text-lg {
-  font-size: 1.25rem;
-  font-weight: 500;
-}
-
-.pop-fonts .text-xl {
-  font-size: 1.6rem;
-  font-weight: 700;
 }
 
 .text-pop {
