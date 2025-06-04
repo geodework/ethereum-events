@@ -13,6 +13,7 @@ export function normalizeEventData(
       location: event?.location || "",
       region: event.countries?.continents?.name || "",
       country: event.countries?.name || "",
+      countryCode: event.countries?.country_code || "",
       startDateTime: new Date(event.start_date_time),
       endDateTime: new Date(event.end_date_time),
       venueType: event.venue_type as TVenueType,

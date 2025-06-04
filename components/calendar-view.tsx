@@ -7,6 +7,7 @@ import { EventCard } from "./event-card"
 import { AdBanner } from "./ad-banner"
 import { MONTHS } from "@/lib/filter"
 import { useFilterStore } from "@/hooks/eventFilter"
+import { countryEmojis } from "@/lib/country"
 
 export function CalendarView() {
   const { filteredEvents: events } = useFilterStore()
@@ -175,7 +176,7 @@ export function CalendarView() {
                           }, 900)
                         }}
                       >
-                        {event.name}
+                        {countryEmojis[event.countryCode] || ""} {event.name}
                       </div>
                     ))}
                   </div>
