@@ -23,7 +23,7 @@ export default function Home() {
       <FilterBar />
 
       <Tabs defaultValue="list" className="w-full">
-        <div className="container py-4 flex flex-row justify-between">
+        <div className="container py-4 flex flex-col sm:flex-row justify-between">
           <TabsList className="grid w-full max-w-md grid-cols-2 border bg-white">
             <TabsTrigger
               value="calendar"
@@ -35,7 +35,7 @@ export default function Home() {
               <List className="mr-2 h-4 w-4" /> Card View
             </TabsTrigger>
           </TabsList>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 mt-4 sm:mt-0">
             <ToggleBar
               id="temperature"
               isChecked={isCelsius}
