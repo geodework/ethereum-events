@@ -13,6 +13,7 @@ export type TEventWithRelations = {
   location: string
   region: string
   country: string
+  countryCode: string
   categories: string[]
   domains: string[]
   venueType: TVenueType

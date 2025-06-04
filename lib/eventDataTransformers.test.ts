@@ -63,6 +63,7 @@ describe("normalizeEventData", () => {
         location: "NYC, USA",
         region: "North America",
         country: "United States",
+        countryCode: "US",
         categories: ["Hackathon", "Summit"],
         domains: ["Web3 General"],
         venueType: "in_person",
