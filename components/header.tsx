@@ -9,10 +9,10 @@ export default function Header() {
         <Title />
         <Link
           href="/list"
-          className="text-secondary-200 font-medium transition-colors text-sm px-3 py-1 rounded-md hover:text-secondary-400 flex items-center gap-1"
+          className="text-secondary-200 font-xs md:font-medium text-sm md:px-3 py-1 rounded-md hover:text-secondary-400 flex flex-col sm:flex-row items-start sm:items-center sm:gap-1"
         >
-          All Events List
-          <ArrowRight className="w-4 h-4 ml-1" />
+          Events
+          <ArrowRight className="w-4 h-4 ml-1 sm:ml-1 mt-1 sm:mt-0" />
         </Link>
       </div>
     </header>

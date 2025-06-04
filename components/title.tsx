@@ -21,7 +21,7 @@ export default function Title(props: {
       </div>
       <Link
         href="/"
-        className={`text-xl font-bold text-white ${props.titleStyle}`}
+        className={`text-xl font-bold text-white ${props.titleStyle} whitespace-nowrap`}
       >
         Ethereum Events
       </Link>
