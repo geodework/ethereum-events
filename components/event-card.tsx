@@ -4,28 +4,11 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import type { TEventWithRelations } from "@/entities"
 import { CATEGORY_META, VENUE_TYPE_NAMES } from "@/lib/filter"
-import { TVenueType } from "@/entities"
-import { type VariantProps } from "class-variance-authority"
-import { EventTypeBadge, badgeVariants } from "./event-type-badge"
+import { EventTypeBadge, getVenueTypeBadgeVariant } from "./event-type-badge"
 import { IconChip } from "./icon-chip"
 import { formatTemperature } from "@/lib/utils"
 import { useCardState } from "@/hooks/cardState"
 import { SocialLinkIcon } from "./social-link-icon"
-
-export function getVenueTypeBadgeVariant(
-  venueType: TVenueType
-): VariantProps<typeof badgeVariants>["variant"] {
-  switch (venueType) {
-    case "in_person":
-      return "in_person"
-    case "virtual":
-      return "virtual"
-    case "hybrid":
-      return "hybrid"
-    default:
-      return "in_person"
-  }
-}
 
 interface EventCardProps {
   event: TEventWithRelations
@@ -54,10 +37,7 @@ export function EventCard({ event }: EventCardProps) {
               {event.name}
             </h3>
           </div>
-          <EventTypeBadge
-            variant={getVenueTypeBadgeVariant(event.venueType)}
-            // className={cn(VENUE_TYPE_COLORS[event.venueType])}
-          >
+          <EventTypeBadge variant={getVenueTypeBadgeVariant(event.venueType)}>
             {VENUE_TYPE_NAMES[event.venueType]}
           </EventTypeBadge>
         </div>
