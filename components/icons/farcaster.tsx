@@ -3,14 +3,11 @@ import { SVGProps } from "react"
 export function FarcasterIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg
-      width="1000"
-      height="1000"
       viewBox="0 0 1000 1000"
-      fill="none"
+      fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
-      <rect width="1000" height="1000" fill="white" />
       <path
         d="M257.778 155.556H742.222V844.444H671.111V528.889H670.414C662.554 441.677 589.258 373.333 500 373.333C410.742 373.333 337.446 441.677 329.586 528.889H328.889V844.444H257.778V155.556Z"
         fill="black"

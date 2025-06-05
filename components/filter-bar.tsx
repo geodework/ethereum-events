@@ -96,7 +96,7 @@ export function FilterBar() {
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-secondary-400" />
             <Input
               type="text"
-              placeholder="Search by city..."
+              placeholder="Search by location..."
               className="h-9 w-[200px] border-secondary-200 pl-8 text-secondary-700"
               value={filters.city}
               onChange={(e) => handleChange("city", e.target.value)}
@@ -119,7 +119,7 @@ export function FilterBar() {
             <Button
               variant="outline"
               size="sm"
-              className="h-9 border-secondary-200 bg-white text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
+              className="h-9 border-secondary-200 bg-white text-secondary-700 hover:bg-accent"
               onClick={() => setIsDialogOpen(true)}
             >
               <SlidersHorizontal className="mr-2 h-4 w-4 text-primary-light-500" />
@@ -183,7 +183,7 @@ export function FilterBar() {
                 <Button
                   variant="outline"
                   size="sm"
-                  className="w-full py-4 border-secondary-200 bg-accent text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
+                  className="w-full py-4 border-secondary-200 bg-accent text-secondary-700 hover:bg-accent"
                   onClick={() => {
                     applyFilters()
                     setIsDialogOpen(false)

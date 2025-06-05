@@ -30,7 +30,7 @@ export function EventCard({ event }: EventCardProps) {
   }
 
   return (
-    <Card className="group h-full overflow-hidden border-secondary-200 transition-all hover:shadow-md">
+    <Card className="group h-full flex flex-col overflow-hidden border-secondary-200 transition-all hover:shadow-md">
       <CardHeader className="bg-primary-light pb-2 py-6">
         <div className="flex items-start justify-between">
           <div>
@@ -43,7 +43,7 @@ export function EventCard({ event }: EventCardProps) {
           </EventTypeBadge>
         </div>
       </CardHeader>
-      <CardContent className="space-y-3 p-4 pb-2">
+      <CardContent className="space-y-3 p-4 pb-2 flex-1">
         <div className="flex flex-wrap gap-1 -mt-7 pb-1">
           {event.categories.map((cat) => {
             const Icon = CATEGORY_META[cat]?.icon || Flag
@@ -82,7 +82,7 @@ export function EventCard({ event }: EventCardProps) {
           })}
         </div>
       </CardContent>
-      <CardFooter className="flex gap-2 border-t border-secondary-100 bg-secondary-50 p-3 justify-end">
+      <CardFooter className="flex gap-2 border-t border-secondary-100 bg-secondary-50 p-3 justify-end h-14 items-center">
         {[...event.socials, ...event.links, ...event.communities].map(
           (link) => {
             if (!link || link.length === 0) return null
@@ -92,7 +92,7 @@ export function EventCard({ event }: EventCardProps) {
                 key={link}
                 variant="outline"
                 size="sm"
-                className="border-secondary-200 bg-white text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
+                className="border-secondary-200 bg-white text-secondary-700 hover:bg-accent"
                 onClick={() => {
                   window.open(link, "_blank")
                 }}
