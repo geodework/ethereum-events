@@ -8,6 +8,7 @@ import { Calendar, List } from "lucide-react"
 import { ToggleBar } from "@/components/toggle-bar"
 import { useCardState } from "@/hooks/cardState"
 import { useEffect, useState } from "react"
+import { Hero } from "@/components/hero"
 
 export default function Home() {
   const { isCelsius, setIsCelsius } = useCardState()
@@ -32,20 +33,14 @@ export default function Home() {
   }, [isXs, activeTab])
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-secondary-50">
-      <div className="container py-8">
-        <div className="mb-8 text-center">
-          <p className="mt-2 text-lg text-secondary-600 text-tealpop">
-            Discover, filter, and track crypto events worldwide.
-          </p>
-        </div>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Hero />
 
       <FilterBar />
 
       <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
         <div className="container py-4 flex flex-col sm:flex-row justify-between">
-          <TabsList className="grid w-full max-w-md grid-cols-2 border bg-white">
+          <TabsList className="grid w-full max-w-md grid-cols-2 border bg-background">
             <TabsTrigger
               value="calendar"
               className="data-[state=active]:bg-accent pointer-events-none opacity-50 sm:pointer-events-auto sm:opacity-100"
@@ -66,11 +61,11 @@ export default function Home() {
           </div>
         </div>
 
-        <TabsContent value="calendar" className="mt-0 bg-white">
+        <TabsContent value="calendar" className="mt-0 bg-background">
           <CalendarView />
         </TabsContent>
 
-        <TabsContent value="list" className="mt-0 bg-white">
+        <TabsContent value="list" className="mt-0 bg-background">
           <CardView />
         </TabsContent>
       </Tabs>

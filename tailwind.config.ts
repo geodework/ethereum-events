@@ -81,9 +81,11 @@ const config = {
           DEFAULT: "hsl(var(--tealpop))",
           foreground: "hsl(var(--tealpop-foreground))",
         },
+        subtitle: "#7C6F65",
       },
       fontFamily: {
         mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
+        serif: ["Playfair Display", "Georgia", "serif"],
       },
       borderRadius: {
         lg: "var(--radius)",

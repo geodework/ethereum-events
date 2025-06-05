@@ -32,7 +32,7 @@ export function FilterBar() {
   const { applyFilters, filters, handleChange, setFilters } = useFilterStore()
 
   return (
-    <div className="sm:sticky sm:top-16 sm:z-40 w-full border-b border-secondary-200 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+    <div className="sm:sticky sm:top-16 sm:z-40 w-full border-b border-secondary-200 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex flex-wrap items-center justify-between gap-2 py-4">
         <div className="flex flex-wrap items-center gap-2">
           <DropdownMenu>
