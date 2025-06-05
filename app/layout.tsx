@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-mono">
+      <body className="font-serif bg-background text-[#23201A]">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"

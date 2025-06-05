@@ -1,33 +1,32 @@
-@import "@fontsource/ibm-plex-mono";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 48 100% 97%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary-hue: 217;
-    --primary-saturation: 100%;
-    --primary-lightness: 50%;
+    --primary-hue: 24;
+    --primary-saturation: 10%;
+    --primary-lightness: 44%;
     --primary: var(--primary-hue), var(--primary-saturation), var(--primary-lightness);
     --primary-foreground: 210 40% 98%;
-    --secondary: 222 22% 57%;
-    --secondary-50: 210 40% 98%;
-    --secondary-100: 210 40% 96.1%;
-    --secondary-200: 210 40% 93%;
-    --secondary-300: 210 40% 85%;
-    --secondary-400: 210 40% 70%;
+    --secondary: 33 22% 57%;
+    --secondary-50: 33 22% 96%;
+    --secondary-100: 33 22% 90%;
+    --secondary-200: 33 22% 80%;
+    --secondary-300: 33 22% 70%;
+    --secondary-400: 33 22% 62%;
     --secondary-500: var(--secondary);
-    --secondary-600: 215 28% 45%;
-    --secondary-700: 217 19% 27%;
-    --secondary-800: 217 28% 15%;
-    --secondary-900: 222 47% 11%;
-    --secondary-950: 222 47% 5%;
+    --secondary-600: 33 22% 47%;
+    --secondary-700: 33 22% 38%;
+    --secondary-800: 33 22% 28%;
+    --secondary-900: 33 22% 18%;
+    --secondary-950: 33 22% 10%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
     --accent: 48 100% 50%;
@@ -85,7 +84,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-[#23201A];
   }
 }
 
@@ -95,11 +94,15 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-mono;
-  font-weight: 700;
+  @apply font-serif font-bold;
   letter-spacing: 0.01em;
 }
 
-.text-pop {
-  color: #ec4899 !important;
+.subtitle {
+  @apply font-serif italic text-subtitle text-lg;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
 }

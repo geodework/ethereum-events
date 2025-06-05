@@ -31,7 +31,7 @@ export function EventCard({ event }: EventCardProps) {
 
   return (
     <Card className="group h-full overflow-hidden border-secondary-200 transition-all hover:shadow-md">
-      <CardHeader className="bg-gradient-to-r from-primary-light to-secondary-50 pb-2 py-6">
+      <CardHeader className="bg-primary-light pb-2 py-6">
         <div className="flex items-start justify-between">
           <div>
             <h3 className="text-xl font-bold text-primary group-hover:text-primary-light-600">
