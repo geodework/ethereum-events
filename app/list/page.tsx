@@ -1,5 +1,11 @@
 import { events } from "@/lib/data"
 import { cn } from "@/lib/utils"
+import { EPage, generateMetadata } from "@/lib/metadata"
+import { Metadata } from "next"
+
+export const metadata: Metadata = generateMetadata({
+  params: { pageType: EPage.List },
+})
 
 export default function ListPage() {
   return (

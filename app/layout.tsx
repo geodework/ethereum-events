@@ -6,11 +6,6 @@ import Footer from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import { AdBanner } from "@/components/ad-banner"
 
-export const metadata: Metadata = {
-  title: "Ethereum Events - Global Crypto Calendar",
-  description: "Discover and plan for crypto events worldwide",
-}
-
 export default function RootLayout({
   children,
 }: Readonly<{
