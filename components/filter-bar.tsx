@@ -96,7 +96,7 @@ export function FilterBar() {
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-secondary-400" />
             <Input
               type="text"
-              placeholder="Search by city..."
+              placeholder="Search by location..."
               className="h-9 w-[200px] border-secondary-200 pl-8 text-secondary-700"
               value={filters.city}
               onChange={(e) => handleChange("city", e.target.value)}
