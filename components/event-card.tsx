@@ -92,7 +92,7 @@ export function EventCard({ event }: EventCardProps) {
                 key={link}
                 variant="outline"
                 size="sm"
-                className="border-secondary-200 bg-white text-secondary-700 hover:bg-primary-light-50 hover:text-primary"
+                className="border-secondary-200 bg-white text-secondary-700 hover:bg-accent"
                 onClick={() => {
                   window.open(link, "_blank")
                 }}
