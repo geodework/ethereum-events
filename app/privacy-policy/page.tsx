@@ -1,4 +1,13 @@
+import { EPage, generateMetadata } from "@/lib/metadata"
+import { Metadata } from "next"
+
+export const metadata: Metadata = generateMetadata({
+  params: { pageType: EPage.PrivacyPolicy },
+})
+
 export default function PrivacyPolicyPage() {
+  })
+
   return (
     <div className="container max-w-4xl py-12 px-4 md:px-8 lg:px-12 rounded-xl shadow-lg mt-8 mb-16">
       <h1 className="font-semibold text-3xl md:text-4xl mb-6 text-primary">

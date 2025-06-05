@@ -1,5 +1,5 @@
 import React from "react"
-import { Calendar, Flag, Globe, MapPin, Thermometer } from "lucide-react"
+import { Calendar, Flag, MapPin, Thermometer } from "lucide-react"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import type { TEventWithRelations } from "@/entities"
