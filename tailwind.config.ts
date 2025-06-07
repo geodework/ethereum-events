@@ -85,6 +85,7 @@ const config = {
       },
       fontFamily: {
         serif: ["Playfair Display", "Georgia", "serif"],
+        mono: ["IBM Plex Mono", ...defaultTheme.fontFamily.mono],
       },
       borderRadius: {
         lg: "var(--radius)",

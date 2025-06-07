@@ -1,3 +1,4 @@
+@import "@fontsource/ibm-plex-mono";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -94,7 +95,7 @@ h3,
 h4,
 h5,
 h6 {
-  @apply font-serif font-bold;
+  @apply font-mono font-bold;
   letter-spacing: 0.01em;
 }
 
