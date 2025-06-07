@@ -59,7 +59,8 @@ export function Hero() {
           </div>
         </div>
         <p className="mt-4 text-lg subtitle">
-          Discover, filter, and track crypto events worldwide.
+          A curated selection of conferences, hackathons, and gatherings across
+          the global Ethereum ecosystem
         </p>
       </div>
     </div>
