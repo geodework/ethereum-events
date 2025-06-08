@@ -58,8 +58,16 @@ const config = {
         accent: {
           DEFAULT: "hsl(var(--accent))",
           foreground: "hsl(var(--accent-foreground))",
-          800: "hsl(var(--accent-800))",
-          900: "hsl(var(--accent-900))",
+          hover: "hsl(var(--accent-hover))",
+          light: "hsl(var(--accent-light))",
+        },
+        purple: {
+          accent: "hsl(var(--purple-accent))",
+          light: "hsl(var(--purple-accent-light))",
+        },
+        violet: {
+          accent: "hsl(var(--violet-accent))",
+          light: "hsl(var(--violet-accent-light))",
         },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",

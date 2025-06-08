@@ -6,5 +6,6 @@
       "Bash(npx shadcn@latest add:*)"
     ],
     "deny": []
-  }
+  },
+  "enableAllProjectMcpServers": false
 }

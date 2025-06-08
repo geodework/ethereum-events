@@ -30,59 +30,81 @@ export function EventCard({ event }: EventCardProps) {
   }
 
   return (
-    <Card className="group h-full flex flex-col overflow-hidden border-secondary-200 transition-all hover:shadow-md">
-      <CardHeader className="bg-primary-light pb-2 py-6">
-        <div className="flex items-start justify-between">
-          <div>
-            <h3 className="text-xl font-bold text-primary group-hover:text-primary-light-600">
-              {event.name}
-            </h3>
-          </div>
+    <Card className="web3-card group h-full flex flex-col overflow-hidden">
+      <CardHeader className="bg-gradient-to-br from-primary/5 to-accent/5 pb-4 py-6 relative">
+        <div className="absolute top-4 right-4 z-10">
           <EventTypeBadge variant={getVenueTypeBadgeVariant(event.venueType)}>
             {VENUE_TYPE_NAMES[event.venueType]}
           </EventTypeBadge>
         </div>
+        <div className="pr-20">
+          <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-200 leading-tight">
+            {event.name}
+          </h3>
+        </div>
       </CardHeader>
-      <CardContent className="space-y-3 p-4 pb-2 flex-1">
-        <div className="flex flex-wrap gap-1 -mt-7 pb-1">
+      <CardContent className="space-y-4 p-6 pb-4 flex-1">
+        {/* Category chips */}
+        <div className="flex flex-wrap gap-2 -mt-2">
           {event.categories.map((cat) => {
             const Icon = CATEGORY_META[cat]?.icon || Flag
-            return <IconChip key={cat} icon={Icon} label={cat} />
-          })}
-        </div>
-        <div className="flex items-center gap-2 text-sm">
-          <MapPin className="h-4 w-4 text-primary-light-500" />
-          <span className="text-secondary-700">
-            {event.location} {countryEmojis[event.countryCode] || ""}
-          </span>
-        </div>
-        <div className="flex items-center gap-2 text-sm">
-          <Calendar className="h-4 w-4 text-primary-light-500" />
-          <span className="text-secondary-700">
-            {formatDateRange(event.startDateTime, event.endDateTime)}
-          </span>
-        </div>
-        <div className="flex items-center gap-2 text-sm">
-          <Thermometer className="h-4 w-4 text-primary-light-500" />
-          <span className="text-secondary-700">
-            Temp: {formatTemperature(event?.weatherMetrics, isCelsius)}
-          </span>
-        </div>
-        <div className="flex flex-wrap gap-1 mb-2">
-          {event.domains?.map((domain) => {
             return (
-              <span
-                key={domain}
-                className="inline-flex items-center gap-1 rounded-full bg-secondary-100 px-2 py-1 font-normal text-secondary-500 mr-2 mb-1"
-                style={{ fontSize: "15px" }}
+              <div 
+                key={cat} 
+                className="web3-chip-primary text-xs"
               >
-                #{domain}
-              </span>
+                <Icon className="h-3 w-3 mr-1" />
+                {cat}
+              </div>
             )
           })}
         </div>
+
+        {/* Event details */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-3 text-sm">
+            <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10">
+              <MapPin className="h-3 w-3 text-primary" />
+            </div>
+            <span className="text-secondary-700 font-medium">
+              {event.location} {countryEmojis[event.countryCode] || ""}
+            </span>
+          </div>
+          
+          <div className="flex items-center gap-3 text-sm">
+            <div className="flex items-center justify-center w-6 h-6 rounded-full bg-accent/10">
+              <Calendar className="h-3 w-3 text-accent-foreground" />
+            </div>
+            <span className="text-secondary-700 font-medium">
+              {formatDateRange(event.startDateTime, event.endDateTime)}
+            </span>
+          </div>
+          
+          <div className="flex items-center gap-3 text-sm">
+            <div className="flex items-center justify-center w-6 h-6 rounded-full bg-purple-light">
+              <Thermometer className="h-3 w-3 text-purple-accent" />
+            </div>
+            <span className="text-secondary-700 font-medium">
+              {formatTemperature(event?.weatherMetrics, isCelsius)}
+            </span>
+          </div>
+        </div>
+
+        {/* Domain tags */}
+        {event.domains && event.domains.length > 0 && (
+          <div className="flex flex-wrap gap-2 pt-2">
+            {event.domains.map((domain) => (
+              <span
+                key={domain}
+                className="web3-chip-secondary text-xs"
+              >
+                #{domain}
+              </span>
+            ))}
+          </div>
+        )}
       </CardContent>
-      <CardFooter className="flex gap-2 border-t border-secondary-100 bg-secondary-50 p-3 justify-end h-14 items-center">
+      <CardFooter className="flex gap-2 border-t border-secondary-100 bg-gradient-to-r from-secondary-50 to-secondary-50/50 p-4 justify-end min-h-[3.5rem] items-center">
         {[...event.socials, ...event.links, ...event.communities].map(
           (link) => {
             if (!link || link.length === 0) return null
@@ -92,7 +114,7 @@ export function EventCard({ event }: EventCardProps) {
                 key={link}
                 variant="outline"
                 size="sm"
-                className="border-secondary-200 bg-white text-secondary-700 hover:bg-accent"
+                className="web3-button-ghost border-secondary-200 hover:border-primary/30 hover:bg-primary/5 hover:scale-105 transition-all duration-200"
                 onClick={() => {
                   window.open(link, "_blank")
                 }}

@@ -5,78 +5,110 @@
 
 @layer base {
   :root {
-    --background: 0, 0%, 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 100%;
+    --foreground: 220 13% 18%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 13% 18%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 13% 18%;
+    
+    /* Web3 Primary Colors - Electric Blue */
     --primary-hue: 217;
     --primary-saturation: 100%;
-    --primary-lightness: 50%;
+    --primary-lightness: 60%;
     --primary: var(--primary-hue), var(--primary-saturation), var(--primary-lightness);
-    --primary-foreground: 210 40% 98%;
-    --secondary: 222 22% 57%;
-    --secondary-50: 210 40% 98%;
-    --secondary-100: 210 40% 96.1%;
-    --secondary-200: 210 40% 93%;
-    --secondary-300: 210 40% 85%;
-    --secondary-400: 210 40% 70%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Secondary Colors - Neutral Grays */
+    --secondary: 220 9% 46%;
+    --secondary-50: 210 20% 98%;
+    --secondary-100: 220 14% 96%;
+    --secondary-200: 220 13% 91%;
+    --secondary-300: 216 12% 84%;
+    --secondary-400: 218 11% 65%;
     --secondary-500: var(--secondary);
-    --secondary-600: 215 28% 45%;
+    --secondary-600: 215 14% 34%;
     --secondary-700: 217 19% 27%;
-    --secondary-800: 217 28% 15%;
-    --secondary-900: 222 47% 11%;
-    --secondary-950: 222 47% 5%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 48 100% 50%;
-    --accent-800: 48 100% 40%;
-    --accent-900: 48 100% 30%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --tealpop: 174 100% 29%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 228 65% 50%;
-    --radius: 0.5rem;
+    --secondary-800: 215 28% 17%;
+    --secondary-900: 220 39% 11%;
+    --secondary-950: 224 71% 4%;
+    
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    
+    /* Web3 Accent Colors - Neon Green/Cyan */
+    --accent: 174 100% 50%;
+    --accent-hover: 174 100% 45%;
+    --accent-light: 174 100% 95%;
+    --accent-foreground: 220 39% 11%;
+    
+    /* Purple accent for secondary actions */
+    --purple-accent: 263 70% 60%;
+    --purple-accent-light: 263 70% 95%;
+    
+    /* Violet accent for special elements */
+    --violet-accent: 271 76% 53%;
+    --violet-accent-light: 271 76% 95%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: var(--primary);
+    --radius: 0.75rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --background: 220 39% 11%;
+    --foreground: 0 0% 100%;
+    --card: 220 39% 11%;
+    --card-foreground: 0 0% 100%;
+    --popover: 220 39% 11%;
+    --popover-foreground: 0 0% 100%;
+    
+    /* Web3 Primary Colors - Bright Electric Blue for dark mode */
     --primary-hue: 217;
     --primary-saturation: 100%;
-    --primary-lightness: 50%;
+    --primary-lightness: 65%;
     --primary: var(--primary-hue), var(--primary-saturation), var(--primary-lightness);
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 210 40% 70%;
-    --secondary-50: 222 47% 11%;
-    --secondary-100: 217 28% 15%;
-    --secondary-200: 217 19% 27%;
-    --secondary-300: 215 28% 45%;
-    --secondary-400: 222 22% 57%;
+    --primary-foreground: 220 39% 11%;
+    
+    /* Dark mode secondary colors */
+    --secondary: 220 9% 65%;
+    --secondary-50: 224 71% 4%;
+    --secondary-100: 220 39% 11%;
+    --secondary-200: 215 28% 17%;
+    --secondary-300: 217 19% 27%;
+    --secondary-400: 215 14% 34%;
     --secondary-500: var(--secondary);
-    --secondary-600: 210 40% 85%;
-    --secondary-700: 210 40% 93%;
-    --secondary-800: 210 40% 96.1%;
-    --secondary-900: 210 40% 98%;
-    --secondary-950: 0 0% 100%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 48 100% 63%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 228 65% 50%;
-
+    --secondary-600: 218 11% 65%;
+    --secondary-700: 216 12% 84%;
+    --secondary-800: 220 13% 91%;
+    --secondary-900: 220 14% 96%;
+    --secondary-950: 210 20% 98%;
+    
+    --muted: 215 28% 17%;
+    --muted-foreground: 220 9% 65%;
+    
+    /* Bright accents for dark mode */
+    --accent: 174 100% 55%;
+    --accent-hover: 174 100% 60%;
+    --accent-light: 174 100% 15%;
+    --accent-foreground: 220 39% 11%;
+    
+    --purple-accent: 263 70% 65%;
+    --purple-accent-light: 263 70% 15%;
+    
+    --violet-accent: 271 76% 58%;
+    --violet-accent-light: 271 76% 15%;
+    
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 215 28% 17%;
+    --input: 215 28% 17%;
+    --ring: var(--primary);
   }
 }
 
@@ -106,4 +138,62 @@ h6 {
 @keyframes twinkle {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.3; }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 5px hsla(var(--primary), 0.3); }
+  50% { box-shadow: 0 0 20px hsla(var(--primary), 0.6), 0 0 30px hsla(var(--primary), 0.4); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes slideInFromLeft {
+  0% { transform: translateX(-100%); opacity: 0; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+
+@layer components {
+  .web3-card {
+    @apply bg-white border border-secondary-200 rounded-xl shadow-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/10 hover:-translate-y-1;
+  }
+  
+  .web3-chip {
+    @apply inline-flex items-center px-3 py-1.5 rounded-full text-sm font-medium transition-all duration-200 cursor-pointer;
+  }
+  
+  .web3-chip-primary {
+    @apply web3-chip bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20 hover:scale-105;
+  }
+  
+  .web3-chip-accent {
+    @apply web3-chip bg-accent/10 text-accent-foreground border border-accent/20 hover:bg-accent/20 hover:scale-105;
+  }
+  
+  .web3-chip-secondary {
+    @apply web3-chip bg-secondary-100 text-secondary-700 border border-secondary-200 hover:bg-secondary-200;
+  }
+  
+  .web3-button {
+    @apply px-4 py-2 rounded-lg font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:ring-offset-2;
+  }
+  
+  .web3-button-primary {
+    @apply web3-button bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 active:scale-95;
+  }
+  
+  .web3-button-ghost {
+    @apply web3-button bg-transparent text-secondary-700 hover:bg-secondary-100 border border-secondary-200 hover:border-secondary-300;
+  }
+  
+  .web3-dropdown {
+    @apply bg-white border border-secondary-200 rounded-xl shadow-lg backdrop-blur-sm;
+    animation: slideInFromLeft 0.2s ease-out;
+  }
+  
+  .web3-filter-bar {
+    @apply sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-secondary-200;
+  }
 }

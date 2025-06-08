@@ -37,25 +37,28 @@ export default function Home() {
 
       <FilterBar />
 
-      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-        <div className="container py-4 flex flex-col sm:flex-row justify-between">
-          <TabsList className="grid w-full max-w-md grid-cols-2 border bg-background">
+      <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full bg-background">
+        <div className="container py-6 flex flex-col sm:flex-row justify-between items-start gap-4">
+          <TabsList className="web3-dropdown grid w-full max-w-md grid-cols-2 bg-white p-1">
             <TabsTrigger
               value="calendar"
-              className="data-[state=active]:bg-accent pointer-events-none opacity-50 sm:pointer-events-auto sm:opacity-100"
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground web3-button rounded-lg pointer-events-none opacity-50 sm:pointer-events-auto sm:opacity-100"
             >
-              <Calendar className="mr-2 h-4 w-4" /> Calendar View
+              <Calendar className="mr-2 h-4 w-4" /> Calendar
             </TabsTrigger>
-            <TabsTrigger value="list" className="data-[state=active]:bg-accent">
-              <List className="mr-2 h-4 w-4" /> Card View
+            <TabsTrigger 
+              value="list" 
+              className="data-[state=active]:bg-primary data-[state=active]:text-primary-foreground web3-button rounded-lg"
+            >
+              <List className="mr-2 h-4 w-4" /> Cards
             </TabsTrigger>
           </TabsList>
-          <div className="flex items-center space-x-2 mt-4 sm:mt-0">
+          <div className="flex items-center space-x-2">
             <ToggleBar
               id="temperature"
               isChecked={isCelsius}
               onCheckedChange={(checked) => setIsCelsius(checked)}
-              label={`Showing ${isCelsius ? "°C" : "°F"}`}
+              label={`${isCelsius ? "°C" : "°F"}`}
             />
           </div>
         </div>
